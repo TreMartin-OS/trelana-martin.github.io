@@ -9,12 +9,13 @@
 ## Git commands - to save changes back to GitHub
 1) In your terminal, type => git add -A
 2) In your terminl, type => git commit -m "describe the work you have completed"
-3) In your terminal, type => git push
-(Run these often, this is how you SAVE your word to GitHub. 
-We have 50 hours & when they're gone we'll create a new account.
-So we need to save all old work to Github constantly so you dont lose anything.
-If you dont save you'll have to pay to get access to your code.)
+3) In your terminal, type => git push  <br>
+<p>
+(Run these often, this is how you SAVE your word to GitHub.  <br>
+We have 50 hours & when they're gone we'll create a new account. <br>
+So we need to save all old work to Github constantly so you dont lose anything. <br>
+If you dont save you'll have to pay to get access to your code.) <br>
 
-(Could maybe attempt more but its over stuff we will cover later.)
-(When assignments are done, send a screenshot to the instructor on Greenlight/Slack)
+(Could maybe attempt more but its over stuff we will cover later.) <br>
+(When assignments are done, send a screenshot to the instructor on Greenlight/Slack) <br>
 (Don't forget to do the Syllabus quiz before class on Monday.)
