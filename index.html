@@ -2,22 +2,96 @@
 <html>
     <head>
       <title>Trelana's Terrific Thang</title>
+      <style>
+        body {
+            background-color: black;
+            color: rgb(0, 0, 0);
+            padding: 10px;
+            font-family: arial;
+            
+            
+        }
+        #all-contents {
+            max-width: 800px;
+            margin: auto;
+        }
+    
+        /* navigation menu */
+        nav {
+            background: rgb(166, 103, 172);
+            margin: 0 auto;
+            margin-bottom: 20px;
+            display: flex;
+            padding: 10px;
+            border-radius: 15px;
+        }
+        nav h1 {
+            display: flex;
+            align-items: center;
+            color: rgb(255, 255, 255);
+            flex: 1;
+            margin: 0;
+        }
+        nav ul {
+            list-style-image: none;
+        }
+        nav li {
+            display: inline-block;
+            padding: 0 10px;
+        }
+        nav a {
+            text-decoration: none;
+            color: rgb(255, 255, 255);
+        }
+    
+        /* main container area beneath menu */
+        main {
+            background: rgb(236, 189, 232);
+            display: flex;
+            border-width: 10px;
+            border-style: double;
+            border-radius: 15px;
+        }
+        .sidebar {
+            margin-right: 25px;
+            padding: 10px;
+        }
+        .sidebar img {
+            width: 200px;
+        }
+        .content {
+            flex: 1;
+            padding: 15px;
+        }
+        h2, h3 {
+            margin: 0px;
+        }
+    </style>
     </head>
     
     <body>
         <div id="all-contents"> 
             <nav>
-    
+    <h1>Whimsical Wonderful Website</h1>
+    <ul>
+        <li>
+          <a href="index.html"> Home </a>
+        </li>
+        <li>
+          <a href="portfolio.html"> Portfolio </a>
+      </li>
+    </ul>
             </nav>
     
             <main>
                 <div class="sidebar">
-      <img src="https://avatars.githubusercontent.com/u/148011278?v=4">
+      <img src="https://avatars.githubusercontent.com/u/148011278?v=4" width="200">
                 </div>
             
                 <div class="content">
                   <h2>Trelana Martin</h2>
-                  <p>Workforce Development Student & Aspiring automation Engineer (with some Game Dev on the side)</p>
+                  <p>Workforce Development Student & Aspiring automation Engineer <br>
+                    (with some Game Dev on the side)</p>
                   <div id="interests">
                     <h3>Interests</h3>
                     <ul>
@@ -31,3 +105,10 @@
         </div>
     </body>
 </html>
+
+<!-- To Save & Push to GitHub:
+## Git commands
+1) In your terminal, type => git add -A
+2) In your terminl, type => git commit -m "describe the work you have completed"
+3) In your terminal, type => git push
+-->
