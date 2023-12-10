@@ -1,10 +1,13 @@
 # trelana-martin.github.io
+(When assignments are done, send a screenshot to the instructor on Greenlight/Slack) <br>
+(Don't forget to do the Syllabus quiz before class on Monday.)
 
 ## First Website
 1) You only /need/ to complete the ToDos 1 - 10
 
 ## Portfolio Page
 1) You only /need/ to complete the ToDos 1 - 5
+
 
 ## Git commands - to save changes back to GitHub
 1) In your terminal, type => git add -A
@@ -16,6 +19,4 @@ We have 50 hours & when they're gone we'll create a new account. <br>
 So we need to save all old work to Github constantly so you dont lose anything. <br>
 If you dont save you'll have to pay to get access to your code.) <br>
 
-(Could maybe attempt more but its over stuff we will cover later.) <br>
-(When assignments are done, send a screenshot to the instructor on Greenlight/Slack) <br>
-(Don't forget to do the Syllabus quiz before class on Monday.)
+
