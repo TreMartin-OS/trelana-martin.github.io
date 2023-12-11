@@ -1,5 +1,7 @@
 # trelana-martin.github.io
-(When assignments are done, send a screenshot to the instructor on Greenlight/Slack) <br>
+Teacher gave these instructions at the 2 hour mark of the Orientation video: <br>
+When your pages are done, send him screenshot. <br>
+*Greenlight doesn't allow screenshots to be posted in the assignment notes, so send them to him via Slack. <br>
 (Don't forget to do the Syllabus quiz before class on Monday.)
 
 ## First Website
