@@ -117,6 +117,15 @@ if (string[0].toLowerCase() == char.toLowerCase()) {
 function endsWith(string, char) {
     // YOUR CODE BELOW HERE //
 
+      // Compare the last character of the string to the Char argument
+if (string[string.length - 1].toLowerCase() == char.toLowerCase()) {
+    // If last letter matches 'char' arg, return True
+    return true;
+  }
+  else if (string[string.length - 1].toLowerCase() != char.toLowerCase()) {  
+    // If last letter doesn't match 'char' arg, return False
+    return false;
+  }
 
 
     // YOUR CODE ABOVE HERE //
@@ -130,6 +139,7 @@ function endsWith(string, char) {
 function concat(stringOne, stringTwo) {
     // YOUR CODE BELOW HERE //
 
+    return stringOne + stringTwo;
 
 
     // YOUR CODE ABOVE HERE //
