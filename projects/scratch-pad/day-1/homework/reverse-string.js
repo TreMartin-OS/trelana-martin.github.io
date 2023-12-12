@@ -1,4 +1,5 @@
 // #!/usr/bin/env node
+//// Teach instructions: IOCE is optional but Pseudocoding is NOT. Due for completion tomorrow before class. We're allowed to use Repl to test code.  
 
 'use strict';
 
@@ -23,6 +24,18 @@ function reverseString(input) {
     // YOUR CODE GOES BELOW HERE //
     
     
+  // Create storage array for later use of pushing letters in reverse to it 
+  var reverseWord = [];
+  // split the letters of the string up into a storage array variable
+      var splitWord = input.split("")
+  // Loop through the newly split array
+      for (var i = 0; i < splitWord.length; i++) {
+  // Unshift (add to front) the letters to a previously created storage array
+      reverseWord.unshift(splitWord[i]);
+           }
+  // Join them together into a new string & return
+return reverseWord.join("");
+
     
     
     // YOUR CODE GOES ABOVE HERE //
