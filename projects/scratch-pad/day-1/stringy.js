@@ -157,9 +157,15 @@ function concat(stringOne, stringTwo) {
  */
 function join(stringOne, stringTwo) {
     // YOUR CODE BELOW HERE //
-    var args = Array.from(arguments);
+// The above example does not actually match what the wanted outcome of this problem is
 
-
+// var args = Array.from(arguments); // OG code they want us to use/alter? 
+// This apparently takes in all arguments without your needing to manually type them
+var args = Array.from(arguments);
+// Join the args that the previous method shoved into an array for you into a new string
+var newArgs = args.join("");
+  // return the new string
+return newArgs;
     // YOUR CODE ABOVE HERE //
 }
 
@@ -175,7 +181,14 @@ function join(stringOne, stringTwo) {
 function longest(stringOne, stringTwo) {
     // YOUR CODE BELOW HERE //
 
-
+  //check if stringOne is longer than stringTwo
+  if (stringOne.length > stringTwo.length) {
+    // If stringOne is longer, return it
+    return stringOne;
+  }
+  else { //if stringOne is NOT longer, return stringTwo
+    return stringTwo;
+  }
 
     // YOUR CODE ABOVE HERE //
 }
@@ -190,7 +203,24 @@ function longest(stringOne, stringTwo) {
 function sortAscending(stringOne, stringTwo) {
     // YOUR CODE BELOW HERE //
 
-
+    // create storage array
+    var theStrings = [];
+    // Put the string args into the storage array
+    theStrings.push(stringOne, stringTwo);
+      // Use sort to put them in alphabetical order
+     theStrings.sort(); 
+      // Compare the order of the strings
+      // return 1 if the stringOne is before the stringTwo
+    if (theStrings[0] === stringOne && stringOne !== stringTwo) {
+    return 1;
+      // return -1 if stringTwo is before the stringOne
+    } else if (theStrings[0] === stringTwo && stringTwo !== stringOne) {
+      return -1;
+      // return 0 if they're equal
+    } else {
+      return 0;
+    }
+  
 
     // YOUR CODE ABOVE HERE //
 }
@@ -207,7 +237,43 @@ function sortDescending(stringOne, stringTwo) {
     // YOUR CODE BELOW HERE //
 
 
+//     // create storage array
+//     var theStrings = [];
+//   // Put the string args into the storage array
+//   theStrings.push(stringOne, stringTwo);
+//     // Use sort to put them in alphabetical order
+//    theStrings.sort(); 
+//     // Compare the order of the strings
+//     // return 1 if the stringOne is after stringTwo
+//   if (theStrings[0] === stringTwo && stringOne !== stringTwo) {
+//   return 1;
+//     // return -1 if stringTwo is after stringOne
+//   } else if (theStrings[0] === stringOne && stringTwo !== stringOne) {
+//     return -1;
+//     // return 0 if they're equal
+//   } else {
+//     return 0;
+//   }
+// ^ This works but feels not quite right.
 
+   // create storage array
+        var theStrings = [];
+   // Put the string args into the storage array
+        theStrings.push(stringOne, stringTwo);
+   // Use sort to put them in alphabetical order
+        theStrings.sort(); 
+   // Compare the order of the strings
+   // If stringOne is listed after stringTwo, return 1
+        if (stringTwo.localeCompare(stringOne) < 0 && stringOne !== stringTwo) {
+        return 1;
+   // if stringTwo is listed after stringOne, return -1 
+        } else if (stringOne.localeCompare(stringTwo > 0 ) && stringTwo !== stringOne) {
+        return -1;
+   // return 0 if they're equal(?) in order
+        } else if (stringTwo === stringOne) {
+        return 0;
+   }
+// ^ This solution feels better since it could compare more than 2 strings
 
     // YOUR CODE ABOVE HERE //
 }
