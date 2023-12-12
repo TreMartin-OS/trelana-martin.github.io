@@ -273,7 +273,7 @@ function sortDescending(stringOne, stringTwo) {
         } else if (stringTwo === stringOne) {
         return 0;
    }
-// ^ This solution feels better since it could compare more than 2 strings
+// ^ This solution feels better since it could compare more than 2 strings.  This can be modified to work for the previous solutio too, but I like having multiple versions.
 
     // YOUR CODE ABOVE HERE //
 }
