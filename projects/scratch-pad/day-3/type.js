@@ -2,6 +2,9 @@
 
 'use strict';
 
+
+// This has nothing from the lecture content, teach mention this at 1:37 of the lecture.   Requires reading up about the typeof Operator. Pay close attention to the GL reading.
+
 /**
  * IN CLASS EXERCISE: TYPE
  */
@@ -14,7 +17,14 @@
  */
 function isArray(value) {
     // YOUR CODE BELOW HERE //
-    
+
+
+
+    if (Array.isArray(value) === true) {
+        return true;
+    } else {
+      return false;
+    }
     
     
     
@@ -32,8 +42,12 @@ function isArray(value) {
 function isObject(value) {
     // YOUR CODE BELOW HERE //
     
+
+
+   // I have 2 working solutions in Repl but the Spec Runner claims something is being left undefined, Helpdesk this tomorrow.
+   // Cant solve the next questions till this one is finished.
     
-    
+
     
     // YOUR CODE ABOVE HERE //
 }
@@ -47,9 +61,7 @@ function isObject(value) {
 function isCollection(value) {
     // YOUR CODE BELOW HERE //
     
-    
-    
-    
+
     // YOUR CODE ABOVE HERE //
 }
 
@@ -75,11 +87,13 @@ function isCollection(value) {
 function typeOf(value) {
     // YOUR CODE BELOW HERE //
     
-    
+     
     
     
     // YOUR CODE ABOVE HERE //
 }
+
+
 
 // DON'T REMOVE THIS CODE //////////////////////////////////////////////////////
 if((typeof process !== 'undefined') &&

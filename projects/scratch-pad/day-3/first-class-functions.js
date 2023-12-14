@@ -2,6 +2,9 @@
 
 'use strict';
 
+// Teach notes: 1st 4 functions are examples of functions that return other functions. So go ahead & add return function(){} to them.
+// The last 2 take in functions are arguments.  You will need to change some of the parameters.
+
 /**
  * IN CLASS EXERCISE: FIRST CLASS FUNCTIONS
  */
@@ -14,8 +17,20 @@
 function createGreaterThanFilter(base) {
     // YOUR CODE BELOW HERE //
     
-    
-    
+
+
+   // Determine if the base is a String or Number
+  if (typeof base === typeof string) {
+    // If String, convert base to a number
+    base = Number(base);
+  }
+    // if not, continue with the math
+    // Return a function that would compare the OG base-input to a newly given value 
+      return function(newNum) {
+      return base < newNum;
+    }
+
+
     
     // YOUR CODE ABOVE HERE //
 }
@@ -28,7 +43,18 @@ function createGreaterThanFilter(base) {
 function createLessThanFilter(base) {
     // YOUR CODE BELOW HERE //
     
-    
+   
+       // Determine if the base is a String or Number
+  if (typeof base === typeof string) {
+    // If String, convert base to a number
+    base = Number(base);
+  }
+    // if not, continue with the math
+    // Return a function that would compare the OG base-input to a newly given value 
+      return function(newNum) {
+      return base > newNum;
+    }
+
     
     
     // YOUR CODE ABOVE HERE //
@@ -42,7 +68,9 @@ function createLessThanFilter(base) {
 function createStartsWithFilter(startsWith) {
     // YOUR CODE BELOW HERE //
     
-    
+    return function() {
+        
+    }
     
     
     // YOUR CODE ABOVE HERE //
@@ -56,7 +84,9 @@ function createStartsWithFilter(startsWith) {
 function createEndsWithFilter(endsWith) {
     // YOUR CODE BELOW HERE //
     
-    
+    return function() {
+        
+    }
     
     
     // YOUR CODE ABOVE HERE //
