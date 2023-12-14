@@ -44,9 +44,30 @@ function isObject(value) {
     
 
 
-   // I have 2 working solutions in Repl but the Spec Runner claims something is being left undefined, Helpdesk this tomorrow.
-   // Cant solve the next questions till this one is finished.
-    
+    //////// Version 1
+  // //  verify that the input is NOT an array object
+  // if (Array.isArray(value)) {
+  //   return false; }
+  // // verify that the input is NOT null object
+  // if (value === null) {
+  //   return false; }
+  // // verify that input is NOT a date instance object
+  // if (value instanceof Date) {
+  //   return false; }
+  // // verify input is still an object after dismissing the above 
+  // if (typeof value === 'object') {
+  // return true; } 
+  // // Verify that input is NOT and object
+  // if (typeof value !== 'object') {
+  //     return false;
+  // }    
+ 
+  ////// Version  2: Much more concise
+  if (typeof value === 'object' && Array.isArray(value) === false && value !== null && value instanceof Date === false) {
+    return true; }
+  else {
+  return false; } 
+ 
 
     
     // YOUR CODE ABOVE HERE //
@@ -61,6 +82,22 @@ function isObject(value) {
 function isCollection(value) {
     // YOUR CODE BELOW HERE //
     
+   
+     
+  // verify that the input is NOT a null object
+  if (value === null) {
+    return false; }
+  // verify that input is NOT a Date Instance object
+  if (value instanceof Date) {
+    return false; }
+    // verify having a response that returns false for when that input is NOT an Array or other kind of object 
+  if (typeof value !== 'object' && !Array.isArray(value)) {
+      return false; } 
+  // verify that the input IS an array OR IS an object after dismissing the above
+  if (typeof value === 'object' || Array.isArray(value)) {
+    return true; } 
+
+
 
     // YOUR CODE ABOVE HERE //
 }
@@ -87,6 +124,33 @@ function isCollection(value) {
 function typeOf(value) {
     // YOUR CODE BELOW HERE //
     
+
+    // Create storage variable
+  var type = '';
+    
+  // If type is Object, find out what kind of object it is using nested if statements
+    if (typeof value === 'object') {
+      // Response for if input is a null object
+        if (value === null) {
+          type = 'null'; }
+      // Response for if input is a Date Instance object
+        if (value instanceof Date) {
+          type = 'date'; }
+      // Response for if input is an Array object
+        if (Array.isArray(value)) {
+          type = 'array'; } 
+      // Response for if input is an object but not of the above types
+        if (typeof value === 'object' && Array.isArray(value) === false && value !== null && value instanceof Date === false) {
+          type = 'object';    
+        }
+      }
+        // Response for if input is anything else
+       if (typeof value !== 'object') { 
+         type = typeof value;
+         type.toString();
+      }
+      
+      return type;  
      
     
     
