@@ -3,7 +3,7 @@
 'use strict';
 
 // Teach notes: 1st 4 functions are examples of functions that return other functions. So go ahead & add return function(){} to them.
-// The last 2 take in functions are arguments.  You will need to change some of the parameters.
+// The last 2 take in functions as arguments.  You will need to change some of the parameters.
 
 /**
  * IN CLASS EXERCISE: FIRST CLASS FUNCTIONS
@@ -68,11 +68,21 @@ function createLessThanFilter(base) {
 function createStartsWithFilter(startsWith) {
     // YOUR CODE BELOW HERE //
     
-    return function() {
-        
-    }
+
+
+// return a function that recalls the saved letter & 
+return function(anuthaOne) {
+  // split & store the string input into a storage array
+    var sndLet = anuthaOne.split('');
+      // Compares the previously saved letter to the 1st letter of a new string    
+        if (startsWith.toLowerCase() == sndLet[0].toLowerCase()) {
+          return true;
+        } else {
+          return false;
+        }}
     
     
+
     // YOUR CODE ABOVE HERE //
 }
 
@@ -84,9 +94,19 @@ function createStartsWithFilter(startsWith) {
 function createEndsWithFilter(endsWith) {
     // YOUR CODE BELOW HERE //
     
-    return function() {
-        
-    }
+
+    
+    // return a function that recalls the saved letter & 
+    return function(aOne) {
+      // split & store the string input into a storage array
+        var lastLet = aOne.split('');
+          // Compares the previously saved letter to the 1st letter of a new string    
+            if (endsWith.toLowerCase() == lastLet[lastLet.length -1].toLowerCase()) {
+              return true;
+            } else {
+              return false;
+            }}
+
     
     
     // YOUR CODE ABOVE HERE //
@@ -102,6 +122,8 @@ function createEndsWithFilter(endsWith) {
 function modifyStrings(strings, modify) {
     // YOUR CODE BELOW HERE //
     
+
+
     
     
     
