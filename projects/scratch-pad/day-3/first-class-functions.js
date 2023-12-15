@@ -152,14 +152,32 @@ function allStringsPass(strings, test) {
     // YOUR CODE BELOW HERE //
     
 
-
-
-
+   // Make a storage array
+   var truthBox = [];
+   //  loop thru the array of strings
+   for (var i = 0; i < strings.length; i++) {
+     // run each string in the Array thru the function Arg, that should verify that the mod has been applied
+       if (test(strings[i]) === true) {  
+       // Push 1 if true, 2 if false
+       truthBox.push(1);
+       } }
+   
+   // Check If OG array is the EXACT same length as the storage array   
+   if (truthBox.length === strings.length) {
+     // If yes, return true
+     return true;
+   } else {
+     // if not, return false
+     return false;
+   }
     
     
     
     // YOUR CODE ABOVE HERE //
 }
+
+console.log(test(strings[0]))
+
 
 // DON'T REMOVE THIS CODE //////////////////////////////////////////////////////
 if((typeof process !== 'undefined') &&
