@@ -24,7 +24,21 @@
 function range(start, end) {
     // YOUR CODE GOES BELOW HERE //
     
-    
+// Create storage array
+var newRange = [];
+    // If A < B
+if (start < end) {
+    // Use a Loop & print the nums between them from lowest to highest
+      for (var i = start; i <= end; i++) {
+      newRange.push(i);
+      }
+} // If A > B
+else if (start > end) {
+  // Use a Loop & print the nums between them from highest to lowest
+    for (var i = start; i >= end; i--) {
+        newRange.push(i);
+      } }
+return newRange;
     
     
     // YOUR CODE GOES ABOVE HERE //
