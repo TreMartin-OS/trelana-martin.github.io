@@ -33,17 +33,21 @@
  *          new-line character added after it!
  */
 
+/////////// Teach hints:  Layout is diff from previous assignments, this is 2 diff functions.  Complet ethe 1st Func 1st because the 2nd wont work if the 1st is broken.
+//  Make sure contacts i assigned to an empty array for the 2nd function.  Func to will be creating methods(?)
+// Look at the contacts list in the data folder, this is what you're trying to create
+
 // YOUR CODE GOES BELOW HERE //
 function makeContact(id, nameFirst, nameLast) {
 
 } 
 
-
+//////////
 function makeContactList() {
     /*
      * You need something here to hold contacts. See length api for a hint:
      */
-    var contacts;
+    var contacts = [];
     
     return {
         // we implemented the length api for you //

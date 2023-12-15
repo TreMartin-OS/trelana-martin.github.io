@@ -123,9 +123,18 @@ function modifyStrings(strings, modify) {
     // YOUR CODE BELOW HERE //
     
 
-
-    
-    
+  
+// Create a storage array for the strings that will be modified
+var arrBox = [];
+  
+// Loop over array of strings
+  for (var i = 0; i < strings.length; i++) {
+// Modify each one using the Function argument & Push the newly modifed strings to a storage array 
+    arrBox.push(modify(strings[i]));
+    }
+  return arrBox;
+  
+        
     
     // YOUR CODE ABOVE HERE //
 }
@@ -142,6 +151,10 @@ function modifyStrings(strings, modify) {
 function allStringsPass(strings, test) {
     // YOUR CODE BELOW HERE //
     
+
+
+
+
     
     
     

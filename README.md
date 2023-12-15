@@ -29,5 +29,3 @@ When your pages are done, send him screenshot of the 2 completed pages. <br>
 We have 50 hours & when they're gone we'll create a new account. <br>
 So we need to save all old work to Github constantly so you dont lose anything. <br>
 If you dont save you'll have to pay to get access to your code.) <br>
-
-
