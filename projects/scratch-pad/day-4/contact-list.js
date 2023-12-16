@@ -40,7 +40,14 @@
 // YOUR CODE GOES BELOW HERE //
 function makeContact(id, nameFirst, nameLast) {
 
-} 
+    // Return in an Object
+    return {
+      id: id,
+      nameFirst: nameFirst,
+      nameLast: nameLast,
+    }
+    
+  } 
 
 //////////
 function makeContactList() {
