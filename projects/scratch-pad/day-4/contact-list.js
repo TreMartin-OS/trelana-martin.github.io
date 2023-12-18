@@ -33,8 +33,8 @@
  *          new-line character added after it!
  */
 
-/////////// Teach hints:  Layout is diff from previous assignments, this is 2 diff functions.  Complet ethe 1st Func 1st because the 2nd wont work if the 1st is broken.
-//  Make sure contacts i assigned to an empty array for the 2nd function.  Func to will be creating methods(?)
+/////////// Teach hints:  Layout is diff from previous assignments, this is many diff functions.  Complete the 1st Func 1st because the 2nd wont work if the 1st is broken.
+//  Make sure contacts are assigned to an empty array for the 2nd function.  Func to will be creating methods(?)
 // Look at the contacts list in the data folder, this is what you're trying to create
 
 // YOUR CODE GOES BELOW HERE //
@@ -50,20 +50,75 @@ function makeContact(id, nameFirst, nameLast) {
   } 
 
 //////////
-function makeContactList() {
+
+function makeContactList(contact) {
     /*
      * You need something here to hold contacts. See length api for a hint:
      */
     var contacts = [];
-    
+
     return {
-        // we implemented the length api for you //
-        length: function() {
+      // b1 // we implemented the length api for you //
+      length: function() {
             return contacts.length;
+        },
+
+      // b2 // Add Contacts things
+      addContact: function(contact) {
+        // Takes new Contact object & pushes it to the Contacs array
+        contacts.push(contact);
+      },
+
+          // b3
+          findContact: function(fullName) {
+        
+            // storage string for temp full names
+            var testThis = '';
+            
+            // Loop thru the contacts array
+            for (var i = 0; i < contacts.length; i++) {
+
+            // store temp full name to var   
+            testThis = contacts[i]['nameFirst'] + ' ' + contacts[i]['nameLast'];
+                // Compares input fullName & checks if it matches the storage fullName
+                if (fullName == testThis) {
+                return contacts[i];
+                } 
+          }},
+
+
+
+      // b4
+      removeContact: function(contact) {
+    
+        for (var i = 0; i < contacts.length; i++) {
+            if (contacts[i]['id'] == contact['id'] && contacts[i]['nameFirst'] == contact['nameFirst'] && contacts[i]['nameLast'] == contact['nameLast'] ) {
+                contacts.splice([i], 1);
+                }
         }
+    },
+
+
+      // b5
+      printAllContactNames() {
+
+        // storage array for created fullNames
+        var nameTime = [];
+
+        // Loop thru the contacts array
+        for (var i = 0; i < contacts.length; i++) {
+            // combine names & push them to storage array
+            nameTime.push(contacts[i]['nameFirst'] + ' ' + contacts[i]['nameLast']);
+        }  
+
+        // change array to string //toString does NOT take parameters
+        var stringTime = nameTime.join('\n');
+  
+        // print list
+        return stringTime;
     }
 }
-
+}
 
 
 
