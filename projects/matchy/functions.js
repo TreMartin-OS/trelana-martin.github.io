@@ -14,11 +14,46 @@
 //////////////////////////////////////////////////////////////////////
 
 
+// Declare Function named search that takes 2 parameters: an array & string
+function search(arr, str) {
+
+
+///////////////////// Solution 1
+    // storage var
+    let answer;
+    
+      // Loop thru the array
+      for (var i = 0; i < arr.length; i++) {
+          // Check if the name value of any objects matches the string input
+          if (arr[i].name === str) {
+              // If it does, return the entire Object
+              answer = arr[i];
+              //break if found or the loop will run to the end of the array
+            break;
+          } // If none do, return null
+          else if (arr[i].name !== str) {
+              answer = null;
+          } // end if-else statements
+      } // end loop
+    return answer
+  } // end func
+
+
 
 //////////////////////////////////////////////////////////////////////
 // Step 2 - Replace //////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
 
+// declare a replace function like this: replace(animals array, name string, replacement object)
+function replace(arr, str, obj) {
+    // Loop thru the array
+    for (var i = 0; i < arr.length; i++)
+        // Check If an animal with the string name exists within the `animals` Array,  
+        if (arr[i].name === str) {
+            // If so, replace it's entire Object with the replacement Object.
+            arr.splice(arr[i], 1, obj);
+        }
+}
 
 
 //////////////////////////////////////////////////////////////////////
