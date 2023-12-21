@@ -1,4 +1,5 @@
 var testObj = {a: 1, b: 2, c: 3, d: 4, e: "string01", f: "string02", g: "string03"}
+var testArr = ['Black Diablos', 'Lagombi', 'Odogaron', 'Tetsucabra', 'Kecha-Wacha' ]
 
 //////////////////////////////////////////////////////////////////////
 // Function 1 - Object Values ////////////////////////////////////////
@@ -16,8 +17,8 @@ storage01.push(object[keys]);
 // Return the storage array OUTSIDE of the loop <- stop forgetting that
 return storage01;
 } 
-
-// console.log(objectValues(testObj));
+ 
+console.log(objectValues(testObj));
 
 //////////////////////////////////////////////////////////////////////
 // Function 2 - Keys to String ///////////////////////////////////////
@@ -49,38 +50,71 @@ return storage02.join(' ');
 // Should take an object and return all its string values in a string each separated with a space
 function valuesToString(object) {
 
-    // Gonna need typeof for this one
-
-        // Another storage arrray
-        var storage03 = [];
-        // loop thru object with a For In loop again
-        for (var keys in object) {
-            // check If value of key is a string,  
-            if (object[keys] === typeof string) {
+// Gonna need typeof for this one
+// Another storage arrray
+var storage03 = [];
+    // loop thru object with a For In loop again
+    for (var keys in object) {
+        // check If value of key is a string,  
+        if (typeof object[keys] === "string") {
             // if so, push to storage array
             storage03.push(object[keys])
             }
         }
-return storage03;
+// return array converted to strings separated by a space
+return storage03.join(' ');
 }
 
-console.log(valuesToString(testObj));
+// console.log(valuesToString(testObj));
 
 //////////////////////////////////////////////////////////////////////
 // Function 4 - Array or Object //////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
 
+// Should take one argument and return 'array' if its an array and 'object' if its an object
 function arrayOrObject(collection) {
-    
+
+     // Create storage variable
+  var storage04 = '';
+
+// Remember that typeof thinks that Objects, Arrays, Nulls, & Dates are all Objects
+// So you got to prove its none of the other Types to single them out
+if (typeof collection === 'object' && Array.isArray(collection) === false && collection !== null && collection instanceof Date === false) {
+    storage04 = 'object';    
+} else if (typeof collection === 'object' && Array.isArray(collection) === true && collection !== null && collection instanceof Date === false) {
+    storage04 = 'array';    
+  }
+    return storage04;
 }
+
+// console.log(arrayOrObject(testObj));
 
 //////////////////////////////////////////////////////////////////////
 // Function 5 - Capitalize Word //////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
 
+// Should take a string of one word, and return the word with its first letter capitalized
 function capitalizeWord(string) {
     
+// Storage!!
+var storage05 = [];
+// split string into individual letters & into an array
+var splitString = string.split('');
+// Push 1st letter into storage array
+storage05.push(splitString[0]);
+// Convert storage array to string
+var storage05a = storage05.toString();
+console.log(storage05a); // shows that first letter is no longer in array and is a lone string
+// Capitilize it 
+storage05a.toUpperCase(); // Why isn't this working?
+
+// All other letters get .joined & .concat with Cap'd storage
+
+return storage05a;
+
 }
+
+console.log(capitalizeWord('bacon'));
 
 //////////////////////////////////////////////////////////////////////
 // Function 6 - Capitalize All Words /////////////////////////////////
