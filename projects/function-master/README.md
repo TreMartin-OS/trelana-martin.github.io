@@ -17,7 +17,7 @@
  - Once they pass they will be **blue** and not red on the page!
 
 # Part 2 - Function Master
-# Left click the function Master.html to open it, these tests where created to test the functions that you need to write on the function-master.js file.  So reverse engineering, oh no!
+# Open the function Master.html, these tests where created to test the functions that you need to write on the function-master.js file.  So reverse engineering!
 # Carefully read the tests cause theres some tricksy things in there 
 
 ## Review Questions from Module One Handbook?

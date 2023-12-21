@@ -1,26 +1,70 @@
+var testObj = {a: 1, b: 2, c: 3, d: 4, e: "string01", f: "string02", g: "string03"}
+
 //////////////////////////////////////////////////////////////////////
 // Function 1 - Object Values ////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
 
+// Should take an object and return its values in an array
 function objectValues(object) {
-
+    // storage arrray
+    var storage01 = [];
+// loop thru object with a For In loop since you can't loop thru an obj with a for loop or use .length
+for (var keys in object) {
+    // Push the Key values to the storage array
+storage01.push(object[keys]);
+}
+// Return the storage array OUTSIDE of the loop <- stop forgetting that
+return storage01;
 } 
+
+// console.log(objectValues(testObj));
 
 //////////////////////////////////////////////////////////////////////
 // Function 2 - Keys to String ///////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
 
+// Should take an object and return all its keys in a string each separated with a space
 function keysToString(object) {
 
+    // Create storage arrray
+    var storage02 = [];
+// loop thru object with a For In loop again
+for (var keys in object) {
+    // Push the Keys to the storage array
+storage02.push(keys);
 }
+// Turn the array into a string with each item separated by a space
+
+// Return the storage array OUTSIDE of the loop <- stop forgetting that
+return storage02.join(' ');
+
+}
+// console.log(keysToString(testObj));
+
 
 //////////////////////////////////////////////////////////////////////
 // Function 3 - Values to String /////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
 
+// Should take an object and return all its string values in a string each separated with a space
 function valuesToString(object) {
-    
+
+    // Gonna need typeof for this one
+
+        // Another storage arrray
+        var storage03 = [];
+        // loop thru object with a For In loop again
+        for (var keys in object) {
+            // check If value of key is a string,  
+            if (object[keys] === typeof string) {
+            // if so, push to storage array
+            storage03.push(object[keys])
+            }
+        }
+return storage03;
 }
+
+console.log(valuesToString(testObj));
 
 //////////////////////////////////////////////////////////////////////
 // Function 4 - Array or Object //////////////////////////////////////
