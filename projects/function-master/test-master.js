@@ -34,7 +34,7 @@
   QUnit.test("A functions local scope is not available in an outer scope.", function(assert){
     function yay(){
       var kix = "kid tested mother approved";
-      assert.equal(kix, "kid tested mother approved"); // Why can the answer be kix or the str attached to it, shouldn't there be 1 answeer?
+      assert.equal(kix, "kid tested mother approved"); // Why can the answer be kix or the str attached to it, shouldn't there be 1 answer?
     }
     yay();
     
