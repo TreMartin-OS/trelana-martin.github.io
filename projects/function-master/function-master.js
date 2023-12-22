@@ -1,4 +1,4 @@
-var testObj = {a: 1, b: 2, c: 3, d: 4, e: "string01", f: "string02", g: "string03"}
+var testObj = {name: 'Trey', species: 'Human', a: 1, b: 2, c: 3, d: 4, e: "string01", f: "string02", g: "string03"}
 var testArr = ['Black Diablos', 'Lagombi', 'Odogaron', 'Tetsucabra', 'Kecha-Wacha' ]
 
 //////////////////////////////////////////////////////////////////////
@@ -95,56 +95,110 @@ if (typeof collection === 'object' && Array.isArray(collection) === false && col
 
 // Should take a string of one word, and return the word with its first letter capitalized
 function capitalizeWord(string) {
-    
-// Storage!!
-var storage05 = [];
-// split string into individual letters & into an array
-var splitString = string.split('');
-// Push 1st letter into storage array
-storage05.push(splitString[0]);
-// Convert storage array to string
-var storage05a = storage05.toString();
-console.log(storage05a); // shows that first letter is no longer in array and is a lone string
-// Capitilize it 
-storage05a.toUpperCase(); // Why isn't this working?
+   
+// Try 2
+var check01 = string[0].toUpperCase();
+var check02 = string.slice(1);
+var check03 = check01.concat(check02);
 
-// All other letters get .joined & .concat with Cap'd storage
-
-return storage05a;
+return check03;
 
 }
 
-console.log(capitalizeWord('bacon'));
+// console.log(capitalizeWord('bacon'));
 
 //////////////////////////////////////////////////////////////////////
 // Function 6 - Capitalize All Words /////////////////////////////////
 //////////////////////////////////////////////////////////////////////
 
+// Should take a string of words and return a string with all the words capitalized
 function capitalizeAllWords(string) {
+
+// storage arr for Cap'd letters
+var capd = [];
+// storage arr for spliced letters
+var spliced = [];
+// storage arr for combined words
+var smoosh = [];
+
+// split words into an array
+var splitEm = string.split(' ');
+// console.log(splitEm); // Words are correctly separated at teh spaces
+
+// Loop thru the array
+for (var i = 0; i < splitEm.length; i++) {
+    // Add 1st letter of each word to Capd arr
+    capd.push(splitEm[i][0].toUpperCase());
+    // Add rest of letters to Spliced arr
+    spliced.push(splitEm[i].slice(1));
+}
+// console.log(capd);
+// console.log(spliced);
+
+// Loop thru capd arr
+for (var i = 0; i < capd.length; i++) {
+// combine with splced arr
+smoosh.push(capd[i].concat(spliced[i]));
+}
+// console.log('Latest: '+ smoosh);
+
+// Return joined words
+return smoosh.join(' ');
     
 }
+// console.log(capitalizeAllWords('boo boo boooooo howling')); // BAM done
 
 //////////////////////////////////////////////////////////////////////
 // Function 7 - Welcome Message //////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
 
+// Should take an object with a name property and return 'Welcome <Name>!
 function welcomeMessage(object) {
 
+// var colection to make sure 1st letter is capd
+var step1 = object.name[0].toUpperCase();
+var step2 = object.name.slice(1);
+var step3 = step1.concat(step2);
+var fin = "Welcome " + step3 + "!";
+
+return fin;
 }
+
+// console.log(welcomeMessage(testObj))
+
 
 //////////////////////////////////////////////////////////////////////
 // Function 8 - Profile Info /////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
 
+// Should take an object with a name an a species and return '<Name> is a <Species>
 function profileInfo(object) {
 
+// another var colection to cap the 1st letters
+var name1 = object.name[0].toUpperCase();
+var name2 = object.name.slice(1);
+var name3 = name1.concat(name2);
+
+var species1 = object.species[0].toUpperCase();
+var species2 = object.species.slice(1);
+var species3 = species1.concat(species2);
+
+var fin = name3 + " is a " + species3;
+return fin;
+
 }
+
+console.log(profileInfo(testObj))
 
 //////////////////////////////////////////////////////////////////////
 // Function 9 - Maybe Noises /////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
 
+// Should take an object, if this object has a noises array return them as a string separated by a space, if there are no noises return 'there are no noises
 function maybeNoises(object) {
+
+// Check object for noises key
+
 
 }
 
