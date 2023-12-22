@@ -19,6 +19,7 @@ When your pages are done, send him screenshot of the 2 completed pages. <br>
 6) In terminal, type => os install
 7) When prompted, enter github username and personal access token
 8) Select project
+* When you remake Gitpod, also remember to run => npm install -g opspark
 
 ## Git commands - to save changes back to GitHub
 1) In your terminal, type => git add -A
