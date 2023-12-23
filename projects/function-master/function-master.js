@@ -1,10 +1,14 @@
 var testObj = {name: 'Trey', species: 'Human', noises: ['Burp', 'yawn', 'snore'], a: 1, b: 2, c: 3, d: 4, e: "string01", f: "string02", g: "string03"};
-var testObj2 = {h: "stuff", i: "More stuff", j: "Man"};
+var testObj2 = {h: "more", i: "stuff", j: "Man", friends: ['Sam', 'Tom']};
 var testArr = ['Black Diablos', 'Lagombi', 'Odogaron', 'Tetsucabra', 'Kecha-Wacha' ];
+var testStr = "This is A test String to Check Stuff In tests!"
 
 console.log(testObj);
 console.log(testObj2);
 console.log(testArr);
+console.log(testStr);
+
+console.log("Testing Info Above ________________________________________________________________________________");
 
 //////////////////////////////////////////////////////////////////////
 // Function 1 - Object Values ////////////////////////////////////////
@@ -148,8 +152,8 @@ smoosh.push(capd[i].concat(spliced[i]));
 
 // Return joined words
 return smoosh.join(' ');
-    
 }
+
 // console.log(capitalizeAllWords('boo boo boooooo howling')); // BAM done
 
 //////////////////////////////////////////////////////////////////////
@@ -160,11 +164,15 @@ return smoosh.join(' ');
 function welcomeMessage(object) {
 
 // var colection to make sure 1st letter is capd
+// Change 1st letter of name to upper case & assigns to storage var
 var step1 = object.name[0].toUpperCase();
+// removes 1st letter of the word & assigns to storage var
 var step2 = object.name.slice(1);
+// Combines capd 1st letter storage var & rest of word storage var
 var step3 = step1.concat(step2);
+// Combines strings with newly capd word & assigns to final var
 var fin = "Welcome " + step3 + "!";
-
+// returns final sentance
 return fin;
 }
 
@@ -178,16 +186,19 @@ return fin;
 // Should take an object with a name an a species and return '<Name> is a <Species>
 function profileInfo(object) {
 
-// another var colection to cap the 1st letters
-var name1 = object.name[0].toUpperCase();
-var name2 = object.name.slice(1);
-var name3 = name1.concat(name2);
+// storage var colection to cap the 1st letters of the name
+var name1 = object.name[0].toUpperCase(); // takes 1st leter & caps it
+var name2 = object.name.slice(1); // removes lowercased 1st letter
+var name3 = name1.concat(name2); // combines caped letter with rest of the word
 
-var species1 = object.species[0].toUpperCase();
-var species2 = object.species.slice(1);
-var species3 = species1.concat(species2);
+// another storage var colection to cap the 1st letters of the species
+var species1 = object.species[0].toUpperCase(); // takes 1st leter & caps it
+var species2 = object.species.slice(1); // removes lowercased 1st letter
+var species3 = species1.concat(species2); // combines caped letter with rest of the word
 
+// Combines newly capd vars with other strings
 var fin = name3 + " is a " + species3;
+// returns them
 return fin;
 
 }
@@ -200,16 +211,21 @@ return fin;
 
 // Should take an object, if this object has a noises array return them as a string separated by a space, if there are no noises return 'there are no noises
 function maybeNoises(object) {
+// assign storage answer 
 var fin;
+
 // Check object for noises key
     if (Array.isArray(object.noises) === true && object.noises.length === 0 ) {
+        // If there is a key but it has no entries
         fin = "there are no noises";
     } else if (Array.isArray(object.noises) === true && object.noises.length > 0) {
-        fin = object.noises.join(" ");
+        // if there is a key & it has entries
+        fin = object.noises.join(" "); // combine them into a string separated by a space
     } else {
+        // If there is no key
         fin = "there are no noises";
     }
-    
+    // return now filled sotrage answer
     return fin;
 } // func close
 
@@ -223,23 +239,69 @@ var fin;
 // Should take a string of words and a word and return true if <word> is in <string of words>, otherwise return false.
 function hasWord(string, word) {
 
+// storage for boolean
+let query;
+
+ // Turn string into searchable array
+let splitEm = string.split(' ');
+ // Loop thru array & compare entries to word arg
+ for (i = 0; i < splitEm.length; i++) {
+    // compare split words to input word
+    if (splitEm[i].toLowerCase() === word.toLowerCase()) {
+        // if they match assign storage boolean to true
+        query = true;
+        break;
+    } else { // if there is no match, assign storage boolean to false
+        query = false;
+    }
+ }
+// return boolean
+return query;
 }
+
+// console.log(hasWord(testStr, 'stuff'));
 
 //////////////////////////////////////////////////////////////////////
 // Function 11 - Add Friend //////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
 
+// Should take a name and an object and add the name to the object's friends array then return the object
 function addFriend (name, object) {
 
+// Push name into the objects friends arr
+object.friends.push(name);
+
+// Return the obj
+return object;
 }
+
+// console.log(addFriend('Bean', testObj2));
 
 //////////////////////////////////////////////////////////////////////
 // Function 12 - Is Friend ///////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
 
+// Should take a name and an object and return true if <name> is a friend of <object> and false otherwise
 function isFriend(name, object) {
+// *********** Maybe noises may contain hint to finish this one? 2nd or 3rd test keep failing
+// create boolean storage var
+var truLie = false;
 
+// Check if Obj even has a friends key
+if (object.friends === true) {
+    // Loop thru objects friends array
+    for (i = 0; i < object.friends.length; i++) {
+        // Check if the name input matches any name in the array
+        if (object.friends[i].toLowerCase() === name.toLowerCase()) {
+            truLie = true;
+           }
+    } 
+} 
+
+return object.friends;
 }
+console.log(isFriend('hat', testObj));
+console.log(isFriend('Sam', testObj2));
 
 //////////////////////////////////////////////////////////////////////
 // Function 13 - Non-Friends /////////////////////////////////////////
