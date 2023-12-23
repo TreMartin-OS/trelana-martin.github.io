@@ -1,5 +1,10 @@
-var testObj = {name: 'Trey', species: 'Human', a: 1, b: 2, c: 3, d: 4, e: "string01", f: "string02", g: "string03"}
-var testArr = ['Black Diablos', 'Lagombi', 'Odogaron', 'Tetsucabra', 'Kecha-Wacha' ]
+var testObj = {name: 'Trey', species: 'Human', noises: ['Burp', 'yawn', 'snore'], a: 1, b: 2, c: 3, d: 4, e: "string01", f: "string02", g: "string03"};
+var testObj2 = {h: "stuff", i: "More stuff", j: "Man"};
+var testArr = ['Black Diablos', 'Lagombi', 'Odogaron', 'Tetsucabra', 'Kecha-Wacha' ];
+
+console.log(testObj);
+console.log(testObj2);
+console.log(testArr);
 
 //////////////////////////////////////////////////////////////////////
 // Function 1 - Object Values ////////////////////////////////////////
@@ -18,7 +23,7 @@ storage01.push(object[keys]);
 return storage01;
 } 
  
-console.log(objectValues(testObj));
+// console.log(objectValues(testObj));
 
 //////////////////////////////////////////////////////////////////////
 // Function 2 - Keys to String ///////////////////////////////////////
@@ -77,14 +82,13 @@ function arrayOrObject(collection) {
      // Create storage variable
   var storage04 = '';
 
-// Remember that typeof thinks that Objects, Arrays, Nulls, & Dates are all Objects
-// So you got to prove its none of the other Types to single them out
+// typeof thinks that Objects, Arrays, Nulls, & Dates are all Objects So check its none of the other Types to single them out
 if (typeof collection === 'object' && Array.isArray(collection) === false && collection !== null && collection instanceof Date === false) {
     storage04 = 'object';    
 } else if (typeof collection === 'object' && Array.isArray(collection) === true && collection !== null && collection instanceof Date === false) {
     storage04 = 'array';    
   }
-    return storage04;
+    return storage04;  
 }
 
 // console.log(arrayOrObject(testObj));
@@ -188,7 +192,7 @@ return fin;
 
 }
 
-console.log(profileInfo(testObj))
+// console.log(profileInfo(testObj))
 
 //////////////////////////////////////////////////////////////////////
 // Function 9 - Maybe Noises /////////////////////////////////////////
@@ -196,16 +200,27 @@ console.log(profileInfo(testObj))
 
 // Should take an object, if this object has a noises array return them as a string separated by a space, if there are no noises return 'there are no noises
 function maybeNoises(object) {
-
+var fin;
 // Check object for noises key
+    if (Array.isArray(object.noises) === true && object.noises.length === 0 ) {
+        fin = "there are no noises";
+    } else if (Array.isArray(object.noises) === true && object.noises.length > 0) {
+        fin = object.noises.join(" ");
+    } else {
+        fin = "there are no noises";
+    }
+    
+    return fin;
+} // func close
 
-
-}
+// console.log(maybeNoises(testObj));
+// console.log(maybeNoises(testObj2));
 
 //////////////////////////////////////////////////////////////////////
 // Function 10 - Has Words ///////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
 
+// Should take a string of words and a word and return true if <word> is in <string of words>, otherwise return false.
 function hasWord(string, word) {
 
 }
