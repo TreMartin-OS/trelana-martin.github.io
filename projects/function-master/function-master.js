@@ -361,19 +361,17 @@ for (var a = 0; a < array.length; a++) {
 // Part 3: Final - Compare frnList & frnTru storage arrays 
 // Loop to compare each element of the arrs
    for (var c = 0; c < frnList.length; c++) { // Looping over arr of all possible friend names
-        if (frnList.includes(frnTru[c]) === false) { //&& frnTru[c].toLowerCase() !== name.toLowerCase()) { // still not working  
+        if (frnTru.includes(frnList[c]) === false && frnList[c].toLowerCase() !== name.toLowerCase()) { // still not working  
             // push the names in frnList that are missing from frnTru to frnLie
-            // frnLie.push(frnList[c]); 
+            frnLie.push(frnList[c]); 
         }
    }
-console.log(frnTru[0].toLowerCase());  // Ths shows indexing is working but why not above?
-
 
 
 return frnLie;
 } // Func closed
 
-console.log(nonFriends('jimmy', testArr2)); // expects: Bob
+// console.log(nonFriends('jimmy', testArr2)); // expects: Bob
 
 //////////////////////////////////////////////////////////////////////
 // Function 14 - Update Object ///////////////////////////////////////
@@ -381,10 +379,24 @@ console.log(nonFriends('jimmy', testArr2)); // expects: Bob
 
 // 26 - Should take an object, a key and a value. Should update the property <key> on <object> with new <value>. If <key> does not exist on <object> create it.
 function updateObject(object, key, value) {
+// temp test var
+// var testing;
 
+    // Check if Object has key
+    if (key in object === true) {
+    // If yes, add value to key/update value ot key
+    object[key] === value;
+    // testing = true;
+    } else if (key in object === false) {
+    // If no, create key & add value
+    object[key] = value;
+    // testing = false;
+    }
 
-
+return object;
 }
+
+console.log(updateObject(testObj2, 'fruit', 'apple'));
 
 
 
