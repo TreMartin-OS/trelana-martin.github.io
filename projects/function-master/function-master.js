@@ -283,57 +283,82 @@ return object;
 
 // Should take a name and an object and return true if <name> is a friend of <object> and false otherwise
 function isFriend(name, object) {
-// *********** Maybe noises may contain hint to finish this one? 2nd or 3rd test keep failing
+
 // create boolean storage var
 var truLie = false;
 
-// Check if Obj even has a friends key
-if (object.friends === true) {
-    // Loop thru objects friends array
-    for (i = 0; i < object.friends.length; i++) {
-        // Check if the name input matches any name in the array
-        if (object.friends[i].toLowerCase() === name.toLowerCase()) {
-            truLie = true;
-           }
-    } 
-} 
-
-return object.friends;
+// Check object for friends key
+    if (Array.isArray(object.friends) === true && object.friends.length === 0 ) {
+        // If there is a friends key but it has no entries
+        truLie = false;
+        // If there is a friends key and it has entries
+    } else if (Array.isArray(object.friends) === true && object.friends.length > 0) {
+        // Loop thru objects friends array
+        for (i = 0; i < object.friends.length; i++) {
+            // Check if any names in the array match the input arg name
+            if (object.friends[i].toLowerCase() === name.toLowerCase()) {
+                truLie = true;
+            }
+    }} else {
+        // If there is no key
+        truLie = false;
+    }
+    // return now filled storage answer
+    return truLie;
 }
-console.log(isFriend('hat', testObj));
-console.log(isFriend('Sam', testObj2));
+
+// console.log(isFriend('hat', testObj));
+// console.log(isFriend('Sam', testObj2));
 
 //////////////////////////////////////////////////////////////////////
 // Function 13 - Non-Friends /////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
 
+// 25 - Should take a name and a list of people, and return a list of all the names that <name> is not friends with
 function nonFriends(name, array) {
 
 }
+
+// console.log(nonFriends(,));
 
 //////////////////////////////////////////////////////////////////////
 // Function 14 - Update Object ///////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
 
+// 26 - Should take an object, a key and a value. Should update the property <key> on <object> with new <value>. If <key> does not exist on <object> create it.
 function updateObject(object, key, value) {
 
+
+
 }
+
+
 
 //////////////////////////////////////////////////////////////////////
 // Function 15 - Remove Properties ///////////////////////////////////
 //////////////////////////////////////////////////////////////////////
 
+// 27 - Should take an object and an array of strings. Should remove any properties on <object> that are listed in <array>
 function removeProperties(object, array) {
 
+
+
 }
+
+
 
 //////////////////////////////////////////////////////////////////////
 // Function 16 - Dedup ///////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
 
+// 28 - Should take an array and return an array with all the duplicates removed
 function dedup(array) {
 
+
+    
 }
+
+
 
 //////////////////////////////////////////////////////////////////////
 // DON'T REMOVE THIS CODE ////////////////////////////////////////////
