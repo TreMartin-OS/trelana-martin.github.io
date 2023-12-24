@@ -2,10 +2,18 @@ var testObj = {name: 'Trey', species: 'Human', noises: ['Burp', 'yawn', 'snore']
 var testObj2 = {h: "more", i: "stuff", j: "Man", friends: ['Sam', 'Tom']};
 var testArr = ['Black Diablos', 'Lagombi', 'Odogaron', 'Tetsucabra', 'Kecha-Wacha' ];
 var testStr = "This is A test String to Check Stuff In tests!"
+var testArr2 = [ // Copied & slightly changed from html file, using the var "data" cause code issues due ot spec code
+    {name: "Sara", friends: ["Jimmy"]},
+    {name: "Bob", friends:[]},
+    {name: "Jimmy", friends:["Sara", "Liza"]},
+    {name: "Liza", friends: ["Jimmy"]}
+    
+  ];
 
 console.log(testObj);
 console.log(testObj2);
 console.log(testArr);
+console.log(testArr2);
 console.log(testStr);
 
 console.log("Testing Info Above ________________________________________________________________________________");
@@ -14,7 +22,7 @@ console.log("Testing Info Above ________________________________________________
 // Function 1 - Object Values ////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
 
-// Should take an object and return its values in an array
+// 13 - Should take an object and return its values in an array
 function objectValues(object) {
     // storage arrray
     var storage01 = [];
@@ -33,7 +41,7 @@ return storage01;
 // Function 2 - Keys to String ///////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
 
-// Should take an object and return all its keys in a string each separated with a space
+// 14 - Should take an object and return all its keys in a string each separated with a space
 function keysToString(object) {
 
     // Create storage arrray
@@ -56,7 +64,7 @@ return storage02.join(' ');
 // Function 3 - Values to String /////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
 
-// Should take an object and return all its string values in a string each separated with a space
+// 15 - Should take an object and return all its string values in a string each separated with a space
 function valuesToString(object) {
 
 // Gonna need typeof for this one
@@ -80,7 +88,7 @@ return storage03.join(' ');
 // Function 4 - Array or Object //////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
 
-// Should take one argument and return 'array' if its an array and 'object' if its an object
+// 16 - Should take one argument and return 'array' if its an array and 'object' if its an object
 function arrayOrObject(collection) {
 
      // Create storage variable
@@ -101,7 +109,7 @@ if (typeof collection === 'object' && Array.isArray(collection) === false && col
 // Function 5 - Capitalize Word //////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
 
-// Should take a string of one word, and return the word with its first letter capitalized
+// 17 - Should take a string of one word, and return the word with its first letter capitalized
 function capitalizeWord(string) {
    
 // Try 2
@@ -119,7 +127,7 @@ return check03;
 // Function 6 - Capitalize All Words /////////////////////////////////
 //////////////////////////////////////////////////////////////////////
 
-// Should take a string of words and return a string with all the words capitalized
+// 18 - Should take a string of words and return a string with all the words capitalized
 function capitalizeAllWords(string) {
 
 // storage arr for Cap'd letters
@@ -160,7 +168,7 @@ return smoosh.join(' ');
 // Function 7 - Welcome Message //////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
 
-// Should take an object with a name property and return 'Welcome <Name>!
+// 19 - Should take an object with a name property and return 'Welcome <Name>!
 function welcomeMessage(object) {
 
 // var colection to make sure 1st letter is capd
@@ -183,7 +191,7 @@ return fin;
 // Function 8 - Profile Info /////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
 
-// Should take an object with a name an a species and return '<Name> is a <Species>
+// 20 - Should take an object with a name an a species and return '<Name> is a <Species>
 function profileInfo(object) {
 
 // storage var colection to cap the 1st letters of the name
@@ -209,7 +217,7 @@ return fin;
 // Function 9 - Maybe Noises /////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
 
-// Should take an object, if this object has a noises array return them as a string separated by a space, if there are no noises return 'there are no noises
+// 21 - Should take an object, if this object has a noises array return them as a string separated by a space, if there are no noises return 'there are no noises
 function maybeNoises(object) {
 // assign storage answer 
 var fin;
@@ -236,7 +244,7 @@ var fin;
 // Function 10 - Has Words ///////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
 
-// Should take a string of words and a word and return true if <word> is in <string of words>, otherwise return false.
+// 22 - Should take a string of words and a word and return true if <word> is in <string of words>, otherwise return false.
 function hasWord(string, word) {
 
 // storage for boolean
@@ -245,7 +253,7 @@ let query;
  // Turn string into searchable array
 let splitEm = string.split(' ');
  // Loop thru array & compare entries to word arg
- for (i = 0; i < splitEm.length; i++) {
+ for (var i = 0; i < splitEm.length; i++) {
     // compare split words to input word
     if (splitEm[i].toLowerCase() === word.toLowerCase()) {
         // if they match assign storage boolean to true
@@ -265,7 +273,7 @@ return query;
 // Function 11 - Add Friend //////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
 
-// Should take a name and an object and add the name to the object's friends array then return the object
+// 23 - Should take a name and an object and add the name to the object's friends array then return the object
 function addFriend (name, object) {
 
 // Push name into the objects friends arr
@@ -281,7 +289,7 @@ return object;
 // Function 12 - Is Friend ///////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
 
-// Should take a name and an object and return true if <name> is a friend of <object> and false otherwise
+// 24 - Should take a name and an object and return true if <name> is a friend of <object> and false otherwise
 function isFriend(name, object) {
 
 // create boolean storage var
@@ -294,7 +302,7 @@ var truLie = false;
         // If there is a friends key and it has entries
     } else if (Array.isArray(object.friends) === true && object.friends.length > 0) {
         // Loop thru objects friends array
-        for (i = 0; i < object.friends.length; i++) {
+        for (var i = 0; i < object.friends.length; i++) {
             // Check if any names in the array match the input arg name
             if (object.friends[i].toLowerCase() === name.toLowerCase()) {
                 truLie = true;
@@ -317,9 +325,55 @@ var truLie = false;
 // 25 - Should take a name and a list of people, and return a list of all the names that <name> is not friends with
 function nonFriends(name, array) {
 
-}
+//Create name storage array for all existing friends in obj
+var frnList = [];
+// Create storage array for friends of matching name obj
+var frnTru = [];
+// create storage array for missing friends
+var frnLie = [];
 
-// console.log(nonFriends(,));
+
+// Part 1 -  Loop thru array & into the objects for each name key
+for (var i = 0; i < array.length; i++) {
+    // push all name values into frnList storage array
+    frnList.push(array[i].name);
+}
+// console.log(frnList) // List is being correctly created
+
+
+// Part 2 - Now Loop through arr again to find the Obj that matches the name input
+for (var a = 0; a < array.length; a++) {
+    // Compare the name key to the name arr
+    if (array[a].name.toLowerCase() === name.toLowerCase()) {
+        // Once you find the name matching object, look for a friends array
+            if (Array.isArray(array[a].friends) === true) {
+            // Loop thru objects friends array
+                for (var b = 0; b < array[a].friends.length; b++) {
+                    // Add names from the matching names friends array to frnTru storage
+                    frnTru.push(array[a].friends[b]);
+            }
+        }
+    }
+}
+// console.log(frnTru); // Seems to be printing correctly
+
+
+// Part 3: Final - Compare frnList & frnTru storage arrays 
+// Loop to compare each element of the arrs
+   for (var c = 0; c < frnList.length; c++) { // Looping over arr of all possible friend names
+        if (frnList.includes(frnTru[c]) === false) { //&& frnTru[c].toLowerCase() !== name.toLowerCase()) { // still not working  
+            // push the names in frnList that are missing from frnTru to frnLie
+            // frnLie.push(frnList[c]); 
+        }
+   }
+console.log(frnTru[0].toLowerCase());  // Ths shows indexing is working but why not above?
+
+
+
+return frnLie;
+} // Func closed
+
+console.log(nonFriends('jimmy', testArr2)); // expects: Bob
 
 //////////////////////////////////////////////////////////////////////
 // Function 14 - Update Object ///////////////////////////////////////
@@ -355,7 +409,7 @@ function removeProperties(object, array) {
 function dedup(array) {
 
 
-    
+
 }
 
 
