@@ -1,6 +1,7 @@
 var testObj = {name: 'Trey', species: 'Human', noises: ['Burp', 'yawn', 'snore'], a: 1, b: 2, c: 3, d: 4, e: "string01", f: "string02", g: "string03"};
-var testObj2 = {h: "more", i: "stuff", j: "Man", friends: ['Sam', 'Tom']};
-var testArr = ['Black Diablos', 'Lagombi', 'Odogaron', 'Tetsucabra', 'Kecha-Wacha' ];
+var testObj2 = {h: "more", i: "stuff", j: "Man", friends: ['Sam', 'Tom'], 'a mine': 10, 'b mine': 15, 'c mine': 20, 'd mine': 25};
+var testArr = ['Black Diablos', 'Lagombi', 'Odogaron', 'Tetsucabra', 'Kecha-Wacha', 'Tetsucabra', 'Logombi' ];
+var testArr2 = ['a mine', 'b mine', 'c mine', 'd mine'];
 var testStr = "This is A test String to Check Stuff In tests!"
 var testArr2 = [ // Copied & slightly changed from html file, using the var "data" cause code issues due ot spec code
     {name: "Sara", friends: ["Jimmy"]},
@@ -377,15 +378,18 @@ return frnLie;
 // Function 14 - Update Object ///////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
 
-// 26 - Should take an object, a key and a value. Should update the property <key> on <object> with new <value>. If <key> does not exist on <object> create it.
+// 26 - Should take an object, a key and a value. 
+// Should update the property <key> on <object> with new <value>. 
+// If <key> does not exist on <object> create it.
 function updateObject(object, key, value) {
 // temp test var
 // var testing;
 
+// Long version
     // Check if Object has key
     if (key in object === true) {
-    // If yes, add value to key/update value ot key
-    object[key] === value;
+    // If yes, add value to key/update value to key
+    object[key] = value;
     // testing = true;
     } else if (key in object === false) {
     // If no, create key & add value
@@ -393,10 +397,14 @@ function updateObject(object, key, value) {
     // testing = false;
     }
 
+    // Short version - either way if the key exists it it will reassign the value, and if it doesn't itll make it & assign at the same time
+    // All the spec tests pass but a lil red arrow pops up to the left of the code line & complains if I just use this
+    // object[key] = value;
+
 return object;
 }
 
-console.log(updateObject(testObj2, 'fruit', 'apple'));
+// console.log(updateObject(testObj2, 'fruit', 'apple'));
 
 
 
@@ -404,13 +412,22 @@ console.log(updateObject(testObj2, 'fruit', 'apple'));
 // Function 15 - Remove Properties ///////////////////////////////////
 //////////////////////////////////////////////////////////////////////
 
-// 27 - Should take an object and an array of strings. Should remove any properties on <object> that are listed in <array>
+
+// 27 - Should take an object and an array of strings. Should remove any properties (keys) on <object> that are listed in <array>
 function removeProperties(object, array) {
 
-
-
+// Create a loop that iterates through the Array
+for (a = 0; a < array.length; a++) {
+    // if a string in the array matches the name of a property/key in the object, remove that property key from the object
+    if (object.hasOwnProperty(array[a]) === true) {
+            delete object[array[a]];
+    }
+}
+return object;
 }
 
+// console.log(removeProperties(testObj, testArr2));
+// console.log(removeProperties(testObj2, testArr2));  // ******** This test is passing BUT the returned Obj still has the removed key:value pairs, ask teach why
 
 
 //////////////////////////////////////////////////////////////////////
@@ -420,11 +437,25 @@ function removeProperties(object, array) {
 // 28 - Should take an array and return an array with all the duplicates removed
 function dedup(array) {
 
+// Create a storage arr var
+var storage = [];
 
+// Loop thru the array
+for (a = 0; a < array.length; a++) {
+    // if storage array doesn't contain the item at the index, 
+    if (storage.includes(array[a]) === false) {
+        // push it into the storage array
+        storage.push(array[a]);
+    } 
+    // else { *********** When I leave this out, my results print iwth doubles still included, adding it makes 1 of the spec tests fail, why?
+    //     a++
+    // }
+}    
 
+return storage;
 }
 
-
+// console.log(dedup(testArr));  // 
 
 //////////////////////////////////////////////////////////////////////
 // DON'T REMOVE THIS CODE ////////////////////////////////////////////
