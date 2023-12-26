@@ -87,9 +87,55 @@ function fizzBuzz(y, x) {
 // drawChessboard //////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function drawChessboard() {
+function drawChessboard(x) {
+
+// Take in 'x', divide by 2, alternate pshing in that many spaces & #s that many times and multiplied by x many times
+// add a newline ever 'x' times
+// then join it all into a string
+
+// shape vars
+  let cheShape = '#', cheSpace = ' ';
+// multiply x by x to see how many times to repeat the pattern
+  // let cheRepeat *= x;
+// divide x by 2 to know where to put newline symbols
+  // let cheLine = x / 2;
+
+// // This prints things to correct number of time but not with alternating rows 
+// console.log(((cheSpace + cheShape).repeat(cheLine) + '\n').repeat(x));
+
+
+// Maybe this?: No, I need to alternate spaces & hashtags every other line, not all in a row
+// console.log(((cheSpace + cheShape).repeat(cheLine) + '\n').repeat(cheLine));
+// console.log(((cheShape + cheSpace).repeat(cheLine) + '\n').repeat(cheLine));
+
+// storage array that items can be pushed to:
+  let cheBoard = [];
+// Max length var
+  let cheEnd = x * x;
+// loop with specific if else statement
+for (a = 0; cheBoard.length < cheEnd; a++) {
+  // if the arr is empty OR the previous index contains #, add Space
+  if (cheBoard.length === 0 || cheBoard.length - 1 === '#') {
+    cheBoard.push(cheSpace);
+      // if the arr length = x, add a newline break
+      if (cheBoard.length === x) {
+      cheBoard.push('\n');
+      }
+  } // if the previous index in the arr is a space, add #
+  else if (cheBoard.length - 1 === ' ') {
+    cheBoard.push(cheShape);
+    // if the arr length = x, add a newline break
+    if (cheBoard.length === x) {
+      cheBoard.push('\n');
+      }
+  }
+}
+
+
 
 }
+
+console.log(drawChessboard(8));
 
 /*
 Expected output example:
