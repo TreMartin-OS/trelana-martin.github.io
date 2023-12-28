@@ -13,6 +13,7 @@ for (var a = 1; a <= x; a++) {
   // Push a # a number of times on a row
 console.log(triShape.repeat(a));
 }}
+
 // console.log(triangles(5));
 //^ This works but is not what chapter 2 wanted?
 
@@ -37,7 +38,7 @@ triangles(3) should print:
 ////////////////////////////////////////////////////////////////////////////////
 // fizzBuzz ////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
-// I think we did this in Scratch already?  Re Do it & then go compare it to the way I did it last time.
+// I think we did this in Scratch already?  ReDo it & then go compare it to the way I did it last time.
 
 // // Try 1 - this works but spec file implies it wants 2 params
 // function fizzBuzz(x) {
@@ -80,8 +81,7 @@ function fizzBuzz(y, x) {
   }}
 
 }
-// console.log(fizzBuzz(25));
-// console.log(fizzBuzz(1, 25));
+
 
 ////////////////////////////////////////////////////////////////////////////////
 // drawChessboard //////////////////////////////////////////////////////////////
@@ -89,53 +89,50 @@ function fizzBuzz(y, x) {
 
 function drawChessboard(x) {
 
-// Take in 'x', divide by 2, alternate pshing in that many spaces & #s that many times and multiplied by x many times
-// add a newline ever 'x' times
-// then join it all into a string
+// Var for row 1
+var cheRow1 =[];
+// Var for row 2
+var cheRow2 =[];
+// Var for board that rows will be alternately add to x number of times
+var cheBoard = [];
+// Storage for finished added arrays to be flattened & turned into a string
+var cheFin; 
 
-// shape vars
-  let cheShape = '#', cheSpace = ' ';
-// multiply x by x to see how many times to repeat the pattern
-  // let cheRepeat *= x;
-// divide x by 2 to know where to put newline symbols
-  // let cheLine = x / 2;
+// Loop to Create Row 1
+for (let a = 0; a < x; a++) {
+  if (cheRow1.length < x && cheRow1[cheRow1.length - 1] !== ' ') {
+    cheRow1.push(' ');
+  } else if (cheRow1.length < x && cheRow1[cheRow1.length - 1] !== '#') {
+    cheRow1.push('#');
+  }
+}  
 
-// // This prints things to correct number of time but not with alternating rows 
-// console.log(((cheSpace + cheShape).repeat(cheLine) + '\n').repeat(x));
-
-
-// Maybe this?: No, I need to alternate spaces & hashtags every other line, not all in a row
-// console.log(((cheSpace + cheShape).repeat(cheLine) + '\n').repeat(cheLine));
-// console.log(((cheShape + cheSpace).repeat(cheLine) + '\n').repeat(cheLine));
-
-// storage array that items can be pushed to:
-  let cheBoard = [];
-// Max length var
-  let cheEnd = x * x;
-// loop with specific if else statement
-for (a = 0; cheBoard.length < cheEnd; a++) {
-  // if the arr is empty OR the previous index contains #, add Space
-  if (cheBoard.length === 0 || cheBoard.length - 1 === '#') {
-    cheBoard.push(cheSpace);
-      // if the arr length = x, add a newline break
-      if (cheBoard.length === x) {
-      cheBoard.push('\n');
-      }
-  } // if the previous index in the arr is a space, add #
-  else if (cheBoard.length - 1 === ' ') {
-    cheBoard.push(cheShape);
-    // if the arr length = x, add a newline break
-    if (cheBoard.length === x) {
-      cheBoard.push('\n');
-      }
+// Loop to Create Row 2
+for (let a = 0; a < x; a++) {
+  if (cheRow2.length < x && cheRow2[cheRow2.length - 1] !== '#') {
+    cheRow2.push('#');
+  } else if (cheRow2.length < x && cheRow2[cheRow2.length - 1] !== ' ') {
+    cheRow2.push(' ');
   }
 }
 
-
-
+// Loop to push Rows alternately to cheBoard x number of times 
+for (let a = 0; a < x ; a++) {
+  if (cheBoard.length < x + x && cheBoard.length % 2 !== 0) { // Checks for room for both pushed arrs + newlines, & if this is an odd or even turn 
+    // & push to cheBoard with a \n at the end
+    cheBoard.push(cheRow2.join('') + '\n');
+  } else if (cheBoard.length < x + x && cheBoard.length % 2 === 0) { // ^ Same
+    // & push to cheBoard with a \n at the end
+    cheBoard.push(cheRow1.join('') + '\n');
+  }
 }
 
-console.log(drawChessboard(8));
+return cheBoard.join('');
+// cheFin = cheBoard.join('');
+// return cheFin;
+}
+
+console.log(drawChessboard(5)); 
 
 /*
 Expected output example:
