@@ -89,48 +89,47 @@ function fizzBuzz(y, x) {
 
 function drawChessboard(x) {
 
-// Var for row 1
-var cheRow1 =[];
-// Var for row 2
-var cheRow2 =[];
-// Var for board that rows will be alternately add to x number of times
-var cheBoard = [];
-// Storage for finished added arrays to be flattened & turned into a string
-var cheFin; 
-
-// Loop to Create Row 1
-for (let a = 0; a < x; a++) {
-  if (cheRow1.length < x && cheRow1[cheRow1.length - 1] !== ' ') {
-    cheRow1.push(' ');
-  } else if (cheRow1.length < x && cheRow1[cheRow1.length - 1] !== '#') {
-    cheRow1.push('#');
+  // Var for row 1
+  var cheRow1 =[];
+  // Var for row 2
+  var cheRow2 =[];
+  // Var for board that rows will be alternately add to x number of times
+  var cheBoard = [];
+  // Storage for finished added arrays to be flattened & turned into a string
+  var cheFin; 
+  
+  // Loop to Create Row 1
+  for (let a = 0; a < x; a++) {
+    if (cheRow1.length < x && cheRow1[cheRow1.length - 1] !== ' ') {
+      cheRow1.push(' ');
+    } else if (cheRow1.length < x && cheRow1[cheRow1.length - 1] !== '#') {
+      cheRow1.push('#');
+    }
+  }  
+  
+  // Loop to Create Row 2
+  for (let a = 0; a < x; a++) {
+    if (cheRow2.length < x && cheRow2[cheRow2.length - 1] !== '#') {
+      cheRow2.push('#');
+    } else if (cheRow2.length < x && cheRow2[cheRow2.length - 1] !== ' ') {
+      cheRow2.push(' ');
+    }
   }
-}  
-
-// Loop to Create Row 2
-for (let a = 0; a < x; a++) {
-  if (cheRow2.length < x && cheRow2[cheRow2.length - 1] !== '#') {
-    cheRow2.push('#');
-  } else if (cheRow2.length < x && cheRow2[cheRow2.length - 1] !== ' ') {
-    cheRow2.push(' ');
+  
+  // Loop to push Rows alternately to cheBoard x number of times 
+  for (let a = 0; a < x ; a++) {
+    if (cheBoard.length < x + x && cheBoard.length % 2 !== 0) { // Checks for room for both pushed arrs + newlines, & if this is an odd or even turn 
+      // & push to cheBoard with a \n at the end
+      cheBoard.push(cheRow2.join('') + '\n');
+    } else if (cheBoard.length < x + x && cheBoard.length % 2 === 0) { // ^ Same
+      // & push to cheBoard with a \n at the end
+      cheBoard.push(cheRow1.join('') + '\n');
+    }
   }
-}
-
-// Loop to push Rows alternately to cheBoard x number of times 
-for (let a = 0; a < x ; a++) {
-  if (cheBoard.length < x + x && cheBoard.length % 2 !== 0) { // Checks for room for both pushed arrs + newlines, & if this is an odd or even turn 
-    // & push to cheBoard with a \n at the end
-    cheBoard.push(cheRow2.join('') + '\n');
-  } else if (cheBoard.length < x + x && cheBoard.length % 2 === 0) { // ^ Same
-    // & push to cheBoard with a \n at the end
-    cheBoard.push(cheRow1.join('') + '\n');
+  
+  cheFin = cheBoard.join('');
+  return cheFin;
   }
-}
-
-return cheBoard.join('');
-// cheFin = cheBoard.join('');
-// return cheFin;
-}
 
 console.log(drawChessboard(5)); 
 
