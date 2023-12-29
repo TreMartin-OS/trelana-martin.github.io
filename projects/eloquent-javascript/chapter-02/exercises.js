@@ -131,7 +131,7 @@ function drawChessboard(x) {
   return cheFin;
   }
 
-console.log(drawChessboard(5)); 
+console.log(drawChessboard(3)); 
 
 /*
 Expected output example:
