@@ -128,10 +128,10 @@ function drawChessboard(x) {
   }
   
   cheFin = cheBoard.join('');
-  return cheFin;
+  // Assignment specifically wants the console.log inside the function
+  console.log(cheFin);
   }
 
-console.log(drawChessboard(3)); 
 
 /*
 Expected output example:
