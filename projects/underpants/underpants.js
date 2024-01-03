@@ -3,12 +3,17 @@
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode
 'use strict';
 
-const { values } = require("lodash");
+const { values } = require("lodash");  
 
 var _ = {};
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-// #1 - There is no 1 workproblem its a global test
+/**  #1 - There is no #1 work problem, its a global test
+Global is failing, am I meant to do anything up here?
+Values is greyed out because why?
+Test script is unhappy that require isn't defined
+Tomorrow copy all this to a replit then re-download this assignment.  Ive obviously messed with something I shouldnt have.
+**/
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 // #2
 /**
