@@ -3,19 +3,9 @@
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode
 'use strict';
 
-const { values } = require("lodash");  
-
 var _ = {};
 
-////////////////////////////////////////////////////////////////////////////////////////////////////
-/**  #1 - There is no #1 work problem, its a global test
-Global is failing, am I meant to do anything up here?
-Values is greyed out because why?
-Test script is unhappy that require isn't defined
-Tomorrow copy all this to a replit then re-download this assignment.  Ive obviously messed with something I shouldnt have.
-**/
-////////////////////////////////////////////////////////////////////////////////////////////////////
-// #2
+
 /**
 * START OF OUR LIBRARY!
 * Implement each function below its instructions
@@ -31,21 +21,7 @@ Tomorrow copy all this to a replit then re-download this assignment.  Ive obviou
 *   _.identity({a: "b"}) === {a: "b"}
 */
 
-_.identity = function(value) {
-    return value;
-};
 
-
-
-
-
-
-
-
-
-
-////////////////////////////////////////////////////////////////////////////////////////////////////
-// #3
 /** _.typeOf
 * Arguments:
 *   1) Any value
@@ -67,16 +43,6 @@ _.identity = function(value) {
 */
 
 
-
-
-
-
-
-
-
-
-////////////////////////////////////////////////////////////////////////////////////////////////////
-// #4
 /** _.first
 * Arguments:
 *   1) An array
@@ -96,16 +62,6 @@ _.identity = function(value) {
 */
 
 
-
-
-
-
-
-
-
-
-////////////////////////////////////////////////////////////////////////////////////////////////////
-// #5
 /** _.last
 * Arguments:
 *   1) An array
@@ -125,16 +81,6 @@ _.identity = function(value) {
 */
 
 
-
-
-
-
-
-
-
-
-////////////////////////////////////////////////////////////////////////////////////////////////////
-// #6
 /** _.indexOf
 * Arguments:
 *   1) An array
@@ -152,16 +98,6 @@ _.identity = function(value) {
 */
 
 
-
-
-
-
-
-
-
-
-////////////////////////////////////////////////////////////////////////////////////////////////////
-// #7
 /** _.contains
 * Arguments:
 *   1) An array
@@ -178,16 +114,6 @@ _.identity = function(value) {
 */
 
 
-
-
-
-
-
-
-
-
-////////////////////////////////////////////////////////////////////////////////////////////////////
-// #8
 /** _.each
 * Arguments:
 *   1) A collection
@@ -205,16 +131,6 @@ _.identity = function(value) {
 */
 
 
-
-
-
-
-
-
-
-
-////////////////////////////////////////////////////////////////////////////////////////////////////
-// #9
 /** _.unique
 * Arguments:
 *   1) An array
@@ -226,16 +142,6 @@ _.identity = function(value) {
 */
 
 
-
-
-
-
-
-
-
-
-////////////////////////////////////////////////////////////////////////////////////////////////////
-// #10
 /** _.filter
 * Arguments:
 *   1) An array
@@ -253,16 +159,6 @@ _.identity = function(value) {
 */
 
 
-
-
-
-
-
-
-
-
-////////////////////////////////////////////////////////////////////////////////////////////////////
-// #11
 /** _.reject
 * Arguments:
 *   1) An array
@@ -277,16 +173,6 @@ _.identity = function(value) {
 */
 
 
-
-
-
-
-
-
-
-
-////////////////////////////////////////////////////////////////////////////////////////////////////
-// #12
 /** _.partition
 * Arguments:
 *   1) An array
@@ -307,17 +193,6 @@ _.identity = function(value) {
 */
 
 
-
-
-
-
-
-
-
-
-
-////////////////////////////////////////////////////////////////////////////////////////////////////
-// #13
 /** _.map
 * Arguments:
 *   1) A collection
@@ -332,37 +207,9 @@ _.identity = function(value) {
 *   3) return the new array
 * Examples:
 *   _.map([1,2,3,4], function(e){return e * 2}) -> [2,4,6,8]
-    _.map(['alex', 'francis', 'aaron'], function(name) {return name + '!'}); => ['alex!', 'francis!', 'aaron!']
-    _.map({a: 'a', b: 'b'}, function(e) {return e.toUpperCase() }); => ['A', 'B']
 */
 
-_.map = function(collection, func) {
-// create storage array
-let mapStorage = [];
 
-// is this an array or object
-if (Array.isArray(collection)) { // // if array
-    // For Loop for Arrays
-    for (let x = 0; x < collection.length; i++) {
-        // Use the callback function to pass in the wanted info (element, index, collection)
-        let arrCallFunc = func(collection[i], i, collection);
-        mapStorage.push(arrCallFunc);
-    }
-} else { // // if object
-    // For In loop for Objects
-    for (let key in collection) {
-        // Use te Callback function to pass in the wanted info (value, key, collection)
-        let objCallFunc = func(collection[key], key, collection);
-        mapStorage.push(objCallFunc);
-    }
-}
-return mapStorage;
-}
-
-
-
-////////////////////////////////////////////////////////////////////////////////////////////////////
-// #14
 /** _.pluck
 * Arguments:
 *   1) An array of objects
@@ -375,18 +222,6 @@ return mapStorage;
 */
 
 
-
-
-
-
-
-
-
-
-
-
-////////////////////////////////////////////////////////////////////////////////////////////////////
-// #15
 /** _.every
 * Arguments:
 *   1) A collection
@@ -402,79 +237,13 @@ return mapStorage;
 *   4) If <function> is not provided, return true if every element is truthy, otherwise return false
 * Edge Cases:
 *   1) what if <function> doesn't return a boolean
-*   2) What if <function> is not given? <== DO THIS!!
-        IE: Function still has to run if func is missing
+*   2) What if <function> is not given?
 * Examples:
 *   _.every([2,4,6], function(e){return e % 2 === 0}) -> true
 *   _.every([1,2,3], function(e){return e % 2 === 0}) -> false
 */
 
-// He breaks this down about 2:15
-_.every = function(collection, func) {
 
-// Need some storage to track T or F
-// let truFalse = [];
-
-// Check if func is provided
-if (func === undefined) { // If func is NOT provided
-        // nested if-elses to check if this an array or object
-    if (Array.isArray(collection)) { // // if array
-            // For Loop for Arrays
-        for (let x = 0; x < collection.length; i++) {
-                // // Do the thing
-            if (!collection[i]) {
-                    return false
-            } // close if
-        }  // close for-loop
-    } // close if
-    else { // // if object
-            // For In loop for Objects
-        for (let key in collection) {
-            // // Do the thing
-            if (!collection[key]) {
-                return false;
-            } // close if
-        } // close for-in loop
-    } // close else
-} // close if-undefined
-
-else { // If the func IS provided
-    // check if this an array or object
-    if (Array.isArray(collection)) { // // if array
-        // For Loop for Arrays
-        for (let x = 0; x < collection.length; i++) {
-            // Use the callback function to pass in the wanted info (element, index, collection)
-            if (!func(collection[i], i, collection)) {
-                return false;
-            } // close pink-if
-        } // close for-loop
-    } // Close blue if
-
-    else { // // if object
-        // For In loop for Objects
-        for (let key in collection) {
-            // Use te Callback function to pass in the wanted info (value, key, collection)
-            if (!func(collection[key], key, collection)) {
-            // Do the thing
-            return false;
-            }
-        } // close for in loop
-    } // close blue else
-} // close main pink else   
-    
-return true; // return true if nothing is false
-
-} // close _.every func
-
-
-
-
-
-
-
-
-////////////////////////////////////////////////////////////////////////////////////////////////////
-// #16
 /** _.some
 * Arguments:
 *   1) A collection
@@ -497,17 +266,6 @@ return true; // return true if nothing is false
 */
 
 
-
-
-
-
-
-
-
-
-
-////////////////////////////////////////////////////////////////////////////////////////////////////
-// #17
 /** _.reduce
 * Arguments:
 *   1) An array
@@ -528,16 +286,6 @@ return true; // return true if nothing is false
 */
 
 
-
-
-
-
-
-
-
-
-////////////////////////////////////////////////////////////////////////////////////////////////////
-// #18
 /** _.extend
 * Arguments:
 *   1) An Object
@@ -552,15 +300,6 @@ return true; // return true if nothing is false
 *   _.extend(data, {b:"two"}); -> data now equals {a:"one",b:"two"}
 *   _.extend(data, {a:"two"}); -> data now equals {a:"two"}
 */
-
-
-
-
-
-
-
-
-
 
 //////////////////////////////////////////////////////////////////////
 // DON'T REMOVE THIS CODE ////////////////////////////////////////////
