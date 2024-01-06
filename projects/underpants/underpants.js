@@ -5,7 +5,8 @@
 
 var _ = {};
 
-
+////////////////////////////////////////////////////////////////////////////////////////////////////
+// #1
 /**
 * START OF OUR LIBRARY!
 * Implement each function below its instructions
@@ -22,6 +23,13 @@ var _ = {};
 */
 
 
+_.identity = function(value) {
+    return value;
+};
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+// #2
 /** _.typeOf
 * Arguments:
 *   1) Any value
@@ -43,6 +51,25 @@ var _ = {};
 */
 
 
+_.typeOf = function(value) {
+
+    //placeholder var
+let stringVal;
+// If-Else statements for diff object types
+if (Array.isArray(value)) {
+stringVal = 'array'
+} else if (value === null ) {
+stringVal = 'null'
+} else {
+    stringVal = typeof value;
+}
+    return stringVal
+};
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+// #3
 /** _.first
 * Arguments:
 *   1) An array
@@ -61,7 +88,28 @@ var _ = {};
 *   _.first(["a", "b", "c"], 2) -> ["a", "b"]
 */
 
+_.first = function(arr, num) {
 
+if (!Array.isArray(arr) || num < 0) {
+return []; 
+} 
+else if (num === null || typeof num !== 'number') {
+return arr[0];
+} 
+else if (num > arr.length) {
+return arr;
+} 
+else {
+return arr.slice(0, num);
+}
+
+};
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+// #4
 /** _.last
 * Arguments:
 *   1) An array
@@ -80,7 +128,26 @@ var _ = {};
 *   _.last(["a", "b", "c"], 2) -> ["b", "c"]
 */
 
+_.last = function(arr, num) {
 
+if (!Array.isArray(arr) || num < 0) {
+    return []; 
+    } 
+    else if (num === null || typeof num !== 'number') {
+    return arr[arr.length - 1];
+    } 
+    else if (num > arr.length) {
+    return arr;
+    } 
+    else {
+    return arr.slice(arr.length - [num], arr.length);
+    }
+
+}
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+// #5
 /** _.indexOf
 * Arguments:
 *   1) An array
@@ -88,7 +155,7 @@ var _ = {};
 * Objectives:
 *   1) Return the index of <array> that is the first occurrance of <value>
 *   2) Return -1 if <value> is not in <array>
-*   3) Do not use [].indexOf()!
+*   3) Do not use [].indexOf()!   // No problem, im pretty sure ive never heard of this
 * Edge Cases:
 *   1) What if <array> has multiple occurances of val?
 *   2) What if <val> isn't in <array>?
@@ -97,7 +164,27 @@ var _ = {};
 *   _.indexOf(["a","b","c"], "d") -> -1
 */
 
+_.indexOf = function(arr, val) {
 
+// storage arr
+let stuff = false;    
+// Loop through arr until you find val & return it
+for (let x = 0; x < arr.length; x++) {
+    if (arr[x] === val) {
+        stuff = true;
+        return x;
+    } 
+}
+    // if val doesnt exist in array, return -1     
+if (stuff === false) {
+        return -1;
+    }
+
+}
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+// #6
 /** _.contains
 * Arguments:
 *   1) An array
@@ -113,7 +200,20 @@ var _ = {};
 *   _.contains([1,"two", 3.14], "two") -> true
 */
 
+_.contains = function(arr, val) {
 
+// loop thru array checking for val
+for (let x = 0; x < arr.length; x++) {
+// if val is found, return true & if val is not found, return false (Use ternary operator)
+
+}
+
+}
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+// #7
 /** _.each
 * Arguments:
 *   1) A collection
@@ -131,6 +231,13 @@ var _ = {};
 */
 
 
+
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+// #8
 /** _.unique
 * Arguments:
 *   1) An array
@@ -142,6 +249,13 @@ var _ = {};
 */
 
 
+
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+// #9
 /** _.filter
 * Arguments:
 *   1) An array
@@ -159,6 +273,13 @@ var _ = {};
 */
 
 
+
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+// #10
 /** _.reject
 * Arguments:
 *   1) An array
@@ -173,6 +294,13 @@ var _ = {};
 */
 
 
+
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+// #11
 /** _.partition
 * Arguments:
 *   1) An array
@@ -193,6 +321,13 @@ var _ = {};
 */
 
 
+
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+// #12
 /** _.map
 * Arguments:
 *   1) A collection
@@ -210,6 +345,34 @@ var _ = {};
 */
 
 
+// _.map = function(collection, func) {
+//     // create storage array
+//     let mapStorage = [];
+    
+//     // is this an array or object
+//     if (Array.isArray(collection)) { // // if array
+//         // For Loop for Arrays
+//         for (let x = 0; x < collection.length; i++) {
+//             // Use the callback function to pass in the wanted info (element, index, collection)
+//             let arrCallFunc = func(collection[i], i, collection);
+//             mapStorage.push(arrCallFunc);
+//         }
+//     } else { // // if object
+//         // For In loop for Objects
+//         for (let key in collection) {
+//             // Use te Callback function to pass in the wanted info (value, key, collection)
+//             let objCallFunc = func(collection[key], key, collection);
+//             mapStorage.push(objCallFunc);
+//         }
+//     }
+//     return mapStorage;
+//     }
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+// #13
 /** _.pluck
 * Arguments:
 *   1) An array of objects
@@ -222,6 +385,13 @@ var _ = {};
 */
 
 
+
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+// #14
 /** _.every
 * Arguments:
 *   1) A collection
@@ -244,6 +414,72 @@ var _ = {};
 */
 
 
+// // He breaks this down about 2:15
+// _.every = function(collection, func) {
+
+//     // Need some storage to track T or F
+//     // let truFalse = [];
+    
+//     // Check if func is provided
+//     if (func === undefined) { // If func is NOT provided
+//             // nested if-elses to check if this an array or object
+//         if (Array.isArray(collection)) { // // if array
+//                 // For Loop for Arrays
+//             for (let x = 0; x < collection.length; i++) {
+//                     // // Do the thing
+//                 if (!collection[i]) {
+//                         return false
+//                 } // close if
+//             }  // close for-loop
+//         } // close if
+//         else { // // if object
+//                 // For In loop for Objects
+//             for (let key in collection) {
+//                 // // Do the thing
+//                 if (!collection[key]) {
+//                     return false;
+//                 } // close if
+//             } // close for-in loop
+//         } // close else
+//     } // close if-undefined
+    
+//     else { // If the func IS provided
+//         // check if this an array or object
+//         if (Array.isArray(collection)) { // // if array
+//             // For Loop for Arrays
+//             for (let x = 0; x < collection.length; i++) {
+//                 // Use the callback function to pass in the wanted info (element, index, collection)
+//                 if (!func(collection[i], i, collection)) {
+//                     return false;
+//                 } // close pink-if
+//             } // close for-loop
+//         } // Close blue if
+    
+//         else { // // if object
+//             // For In loop for Objects
+//             for (let key in collection) {
+//                 // Use te Callback function to pass in the wanted info (value, key, collection)
+//                 if (!func(collection[key], key, collection)) {
+//                 // Do the thing
+//                 return false;
+//                 }
+//             } // close for in loop
+//         } // close blue else
+//     } // close main pink else   
+    
+//     return true; // return true if nothing is false
+    
+//     } // close _.every func
+    
+    
+    
+
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+// #15
 /** _.some
 * Arguments:
 *   1) A collection
@@ -266,6 +502,13 @@ var _ = {};
 */
 
 
+
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+// #16
 /** _.reduce
 * Arguments:
 *   1) An array
@@ -286,6 +529,13 @@ var _ = {};
 */
 
 
+
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+// #17
 /** _.extend
 * Arguments:
 *   1) An Object
@@ -300,6 +550,12 @@ var _ = {};
 *   _.extend(data, {b:"two"}); -> data now equals {a:"one",b:"two"}
 *   _.extend(data, {a:"two"}); -> data now equals {a:"two"}
 */
+
+
+
+
+
+
 
 //////////////////////////////////////////////////////////////////////
 // DON'T REMOVE THIS CODE ////////////////////////////////////////////
