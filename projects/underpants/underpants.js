@@ -181,6 +181,7 @@ if (stuff === false) {
     }
 
 }
+// console.log(_.indexOf([1, 2, 3, 1, 4, 5, 6, 1], 1));
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -278,18 +279,17 @@ _.unique = function(arr) {
 let newList = [];
 // Loop thru arr
 for (let a = 0; a < arr.length; a++) {
-    // run each arr item thru _.indexof()
-    let checkThis = _.indexOf(arr[a]);
-        // I guess if indexOf returns true, push something to the storage arr? Its not very clear whats expected.
-        if (checkThis === true) {
-        newList.push(arr[a]);
-
+    // run each arr item thru _.indexof(), it returns index of 1st place val is found in the arr
+    let checkThis = _.indexOf(arr, arr[a]);
+        // I guess if indexOf returns true, push something to the storage arr?
+        if (checkThis !== -1 && !newList.includes(arr[a])) {
+        newList.push(arr[a]); 
         }
 }   
-
+return newList;
 }
-
-console.log(_.unique([1, 2, 3, 1, 4, 5, 6, 1])); //
+// Why do red arrows keep appearing on the line counter then vanishing when I leave a comment about them
+// Why does this function have a squiggly blue line down the line number counter
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -311,8 +311,21 @@ console.log(_.unique([1, 2, 3, 1, 4, 5, 6, 1])); //
 */
 
 
+_.filter = function(arr, func) {
 
+// storeage arr
+let newArr = [];
+// Loop thru arr
+for (let a = 0; a < arr.length; a++) {
+    // run every element thru func using: element, indenx, the entire arr & check if func returned true
+    if (func(arr[a], a, arr) === true) { 
+        // if returned true, push element to storage arr
+        newArr.push(arr[a]);
+}
+}
+return newArr;
 
+}
 
 
 
@@ -331,10 +344,22 @@ console.log(_.unique([1, 2, 3, 1, 4, 5, 6, 1])); //
 *   _.reject([1,2,3,4,5], function(e){return e%2 === 0}) -> [1,3,5]
 */
 
+_.reject = function(arr, func) {
+
+// storeage arr
+let newArr = [];
+// Loop thru arr
+for (let a = 0; a < arr.length; a++) {
+    // run every element thru func using: element, indenx, the entire arr & check if func returned true
+    if (func(arr[a], a, arr) === false) { 
+        // if returned true, push element to storage arr
+        newArr.push(arr[a]);
+}
+}
+return newArr;
 
 
-
-
+}
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -358,9 +383,29 @@ console.log(_.unique([1, 2, 3, 1, 4, 5, 6, 1])); //
 }
 */
 
+_.partition = function(arr, func) {
 
+// will need 3 storage arrs
+let arr01 = [];
+let arr02 = [];
+let arr03 = [];
 
-
+// For-In(?) loop thru arr // & run everything thru func using: element, key, array
+for (let keys in arr) {
+    // if func returns true, push to arr01
+    if (  func(arr[keys], keys, arr) === true) {
+        arr01.push(arr[keys]);
+    }
+        // if func returns false, push to arr02
+    else {
+        arr02.push(arr[keys]);
+    }
+}
+// push arr01 then arr02 to arr03
+arr03.push(arr01, arr02)
+// return arr03
+return arr03;
+}
 
 
 
@@ -383,28 +428,29 @@ console.log(_.unique([1, 2, 3, 1, 4, 5, 6, 1])); //
 */
 
 
-// _.map = function(collection, func) {
-//     // create storage array
-//     let mapStorage = [];
+_.map = function(col, func) {
     
-//     // is this an array or object
-//     if (Array.isArray(collection)) { // // if array
-//         // For Loop for Arrays
-//         for (let x = 0; x < collection.length; i++) {
-//             // Use the callback function to pass in the wanted info (element, index, collection)
-//             let arrCallFunc = func(collection[i], i, collection);
-//             mapStorage.push(arrCallFunc);
-//         }
-//     } else { // // if object
-//         // For In loop for Objects
-//         for (let key in collection) {
-//             // Use te Callback function to pass in the wanted info (value, key, collection)
-//             let objCallFunc = func(collection[key], key, collection);
-//             mapStorage.push(objCallFunc);
-//         }
-//     }
-//     return mapStorage;
-//     }
+// create storage array
+let mapStorage = [];
+    
+// is this an array or object
+if (Array.isArray(col)) { // // if array
+    // For Loop for Arrays
+    for (let x = 0; x < col.length; x++) {
+        // Use the callback function to pass in the wanted info (element, index, collection)
+        let arrCallFunc = func(col[x], x, col);
+        mapStorage.push(arrCallFunc);
+    }
+} else { // // if object
+    // For In loop for Objects
+    for (let key in col) {
+            // Use te Callback function to pass in the wanted info (value, key, collection)
+            let objCallFunc = func(col[key], key, col);
+            mapStorage.push(objCallFunc);
+    }
+}
+return mapStorage;
+}
 
 
 
@@ -423,9 +469,41 @@ console.log(_.unique([1, 2, 3, 1, 4, 5, 6, 1])); //
 */
 
 
+_.pluck = function(arr, prop) {
+
+// storage array
+let storage = [];
+
+// loop thru array of objects, pull all values from the keys, add them to storage array, must use _.map()
+// _.map() returns an array of objects that have been sored into true arr & false arrs
+
+// Loop thru arr
+for (let x = 0; x < arr.length; x++) {
+    // look thru objects with for in loop for the prop
+    for (let key in arr[x]) {
+        // if key === prop push the value to storage arr
+            // console.log(arr[x][key]); // this logs the values of the keys
+            // console.log(arr[x]); // This logs the entire object, I need ot be able to SEE THE KEYS
+            console.log(arr[x]);
+        // if (arr[x][key] === prop) {
+            // storage.push(arr[x][key]);
+            // console.log(arr[x][key]); // dude wtf
+        // }
+    }
+}
 
 
+return storage;
+}
 
+var man = [
+    { dude: "Ralph", bro: 22},
+    { dude: "Jimmy", bro: 13},
+    { dude: "Carla", bro: 20}
+];
+
+console.log(_.pluck(man, 'dude')); // 
+// To do: Find why I cant see the keys (may only be visible with for-in loop), figure out how _.map is suppossed to be useful for this
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
