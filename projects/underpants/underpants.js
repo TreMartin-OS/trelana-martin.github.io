@@ -202,13 +202,22 @@ if (stuff === false) {
 
 _.contains = function(arr, val) {
 
+
+// storage var
+let truFal = [];
 // loop thru array checking for val
 for (let x = 0; x < arr.length; x++) {
-// if val is found, return true & if val is not found, return false (Use ternary operator)
+   // val is found, push something to storage
+   if (arr[x] === val)
+   truFal.push(x);
+   }
+    // if val is found, return true & if val is not found, return false (Use ternary operator)
+let answer = truFal.length === 0 ? false : true; // I dont understand why this only works backwards, true should be listed 1st but it wont return correctly
 
+return answer;
 }
 
-}
+// console.log(_.contains(['a', 'b', 'c', 'd'], 'c')); // Returns true but only when I reverse my ternary operators order ****************************************
 
 
 
@@ -219,9 +228,9 @@ for (let x = 0; x < arr.length; x++) {
 *   1) A collection
 *   2) A function
 * Objectives:
-*   1) if <collection> is an array, call <function> once for each element
+*   1) if <collection> is an array, call <function> once for each element (Is this asking if col is an arr full of objs?)
 *      with the arguments:
-*         the element, it's index, <collection>
+*         the element, it's index, <collection> ()
 *   2) if <collection> is an object, call <function> once for each property
 *      with the arguments:
 *         the property's value, it's key, <collection>
@@ -231,9 +240,24 @@ for (let x = 0; x < arr.length; x++) {
 */
 
 
+_.each = function(col, func) {
 
-
-
+// check if col is an array
+if (Array.isArray(col)) {
+    // loop thru array of objects (I think thats what the instructions are implying?)
+    for (let a = 0; a < col.length; a++) {
+        // apply the func using 3 things as args: element, index, entire collection
+        func(col[a], a, col);
+    }
+} // if col is an Object but not an array or the other object types
+else if (typeof col === 'object' && !Array.isArray(col) && col !== null && col instanceof Date === false) {
+    // For-In Loop thru array 
+    for (let keys in col) {
+        // run these thru func: prop value, key, entire collection
+        func(col[keys], keys, col);
+    }
+}
+}   
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -248,10 +272,24 @@ for (let x = 0; x < arr.length; x++) {
 *   _.unique([1,2,2,4,5,6,5,2]) -> [1,2,4,5,6]
 */
 
+_.unique = function(arr) {
 
+// storage arr
+let newList = [];
+// Loop thru arr
+for (let a = 0; a < arr.length; a++) {
+    // run each arr item thru _.indexof()
+    let checkThis = _.indexOf(arr[a]);
+        // I guess if indexOf returns true, push something to the storage arr? Its not very clear whats expected.
+        if (checkThis === true) {
+        newList.push(arr[a]);
 
+        }
+}   
 
+}
 
+console.log(_.unique([1, 2, 3, 1, 4, 5, 6, 1])); //
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
