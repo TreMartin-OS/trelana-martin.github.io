@@ -213,12 +213,12 @@ for (let x = 0; x < arr.length; x++) {
    truFal.push(x);
    }
     // if val is found, return true & if val is not found, return false (Use ternary operator)
-let answer = truFal.length === 0 ? false : true; // I dont understand why this only works backwards, true should be listed 1st but it wont return correctly
+let answer = truFal.length > 0 ? true : false; 
 
 return answer;
 }
 
-// console.log(_.contains(['a', 'b', 'c', 'd'], 'c')); // Returns true but only when I reverse my ternary operators order ****************************************
+// console.log(_.contains(['a', 'b', 'c', 'd'], 'c')); // Returns true
 
 
 
@@ -449,6 +449,7 @@ if (Array.isArray(col)) { // // if array
             mapStorage.push(objCallFunc);
     }
 }
+// console.log(mapStorage); // For testing vague data 
 return mapStorage;
 }
 
@@ -463,7 +464,7 @@ return mapStorage;
 *   2) A property
 * Objectives:
 *   1) Return an array containing the value of <property> for every element in <array>
-*   2) You must use _.map() in your implementation.
+*   2) You must use _.map() in your implementation.  // I dont understand the need for map
 * Examples:
 *   _.pluck([{a: "one"}, {a: "two"}], "a") -> ["one", "two"]
 */
@@ -474,21 +475,20 @@ _.pluck = function(arr, prop) {
 // storage array
 let storage = [];
 
+// Try 2: To do: figure out how _.map is suppossed to be useful for this *************************************************
 // loop thru array of objects, pull all values from the keys, add them to storage array, must use _.map()
 // _.map() returns an array of objects that have been sored into true arr & false arrs
 
+
+// Try 1 - passes all tests without using _.map() ************************************************************************
 // Loop thru arr
 for (let x = 0; x < arr.length; x++) {
     // look thru objects with for in loop for the prop
     for (let key in arr[x]) {
         // if key === prop push the value to storage arr
-            // console.log(arr[x][key]); // this logs the values of the keys
-            // console.log(arr[x]); // This logs the entire object, I need ot be able to SEE THE KEYS
-            console.log(arr[x]);
-        // if (arr[x][key] === prop) {
-            // storage.push(arr[x][key]);
-            // console.log(arr[x][key]); // dude wtf
-        // }
+        if (key === prop) {
+            storage.push(arr[x][key]);
+        }
     }
 }
 
@@ -496,14 +496,16 @@ for (let x = 0; x < arr.length; x++) {
 return storage;
 }
 
-var man = [
-    { dude: "Ralph", bro: 22},
-    { dude: "Jimmy", bro: 13},
-    { dude: "Carla", bro: 20}
-];
+// // Testing OBJ
+// var man = [
+//     { dude: "Ralph", bro: 22},
+//     { dude: "Jimmy", bro: 13},
+//     { dude: "Carla", bro: 20}
+// ];
 
-console.log(_.pluck(man, 'dude')); // 
-// To do: Find why I cant see the keys (may only be visible with for-in loop), figure out how _.map is suppossed to be useful for this
+// console.log(_.pluck(man, 'dude')); // 
+console.log('Go back to #13 to add _.map()');
+
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -530,67 +532,100 @@ console.log(_.pluck(man, 'dude')); //
 */
 
 
-// // He breaks this down about 2:15
-// _.every = function(collection, func) {
+_.every = function(col, func) {
 
-//     // Need some storage to track T or F
-//     // let truFalse = [];
-    
-//     // Check if func is provided
-//     if (func === undefined) { // If func is NOT provided
-//             // nested if-elses to check if this an array or object
-//         if (Array.isArray(collection)) { // // if array
-//                 // For Loop for Arrays
-//             for (let x = 0; x < collection.length; i++) {
-//                     // // Do the thing
-//                 if (!collection[i]) {
-//                         return false
-//                 } // close if
-//             }  // close for-loop
-//         } // close if
-//         else { // // if object
-//                 // For In loop for Objects
-//             for (let key in collection) {
-//                 // // Do the thing
-//                 if (!collection[key]) {
-//                     return false;
-//                 } // close if
-//             } // close for-in loop
-//         } // close else
-//     } // close if-undefined
-    
-//     else { // If the func IS provided
-//         // check if this an array or object
-//         if (Array.isArray(collection)) { // // if array
-//             // For Loop for Arrays
-//             for (let x = 0; x < collection.length; i++) {
-//                 // Use the callback function to pass in the wanted info (element, index, collection)
-//                 if (!func(collection[i], i, collection)) {
-//                     return false;
-//                 } // close pink-if
-//             } // close for-loop
-//         } // Close blue if
-    
-//         else { // // if object
-//             // For In loop for Objects
-//             for (let key in collection) {
-//                 // Use te Callback function to pass in the wanted info (value, key, collection)
-//                 if (!func(collection[key], key, collection)) {
-//                 // Do the thing
-//                 return false;
-//                 }
-//             } // close for in loop
-//         } // close blue else
-//     } // close main pink else   
-    
-//     return true; // return true if nothing is false
-    
-//     } // close _.every func
-    
-    
-    
+// Missed this, every single element must be true to return true.  So if somethign in an arr is true, push something to a new arr, if false, dont. then compare arr lengths.
+let truFal = [];
+let answer;
 
+// Check if func is provided
+if (func === undefined) { // If func is NOT provided /////
+    // nested if-elses to check if this an array or object
+    if (Array.isArray(col)) { // // if array
+        // For Loop for Arrays
+        for (let x = 0; x < col.length; x++) {
+            // If true, push to storage arr
+            if (col[x] === true) { 
+                truFal.push(col[x]);
+            } 
+        }  
+        if (col.length === truFal.length) {
+            answer = true;
+        } else {
+            answer = false;
+        }
+    } 
+    else { // // if object
+        // Obj key array to compare lengths later because objs dont have lengths
+        let keyCount = Object.keys(col);
+        // console.log(keyCount);
 
+        // For In loop for Objects
+        for (let key in col) {
+            // If true, push to storage arr
+            if (col[key]) {
+                truFal.push(col[key]);
+            } 
+        }
+        ////////////////////////////////////////////////////////////
+        console.log(keyCount);
+        console.log(truFal);
+        console.log(keyCount.length);
+        console.log(truFal.length);
+        ////////////////////////////////////////////////////////////
+        if (keyCount.length === truFal.length) { 
+            answer = true;
+        } else {
+            answer = false;
+        }
+    }
+}
+
+if (func !== undefined) { // If the func IS provided
+    // check if this an array or object
+    if (Array.isArray(col)) { // // if array
+        // For Loop for Arrays
+        for (let x = 0; x < col.length; x++) {
+            // Use the callback function to pass in the wanted info (element, index, collection)
+            if (func(col[x], x, col) === true) {
+                truFal.push(col[x]);;
+            } 
+        }
+        if (col.length === truFal.length) {
+            answer = true;
+        } else {
+            answer = false;
+        }
+
+    }
+    else { // // if object
+        // Obj key array to compare lengths later
+        let keyCount = Object.keys(col);
+        // console.log(keyCount);
+
+        // For In loop for Objects
+        for (let key in col) {
+            // Use te Callback function to pass in the wanted info (value, key, collection)
+            if (func(col[key], key, col)) {
+                // Do the thing
+                truFal.push(col[key]);;
+            } 
+        }
+        if (keyCount.length === truFal.length) {
+            answer = true;
+        } else {
+            answer = false;
+        }
+    }
+}  
+
+// compare arrays
+
+return answer;
+}
+
+console.log(_.every({a: '1', b: '2', c: '3'})); // pass in obj with No func
+// This is returning true, spec runner claims its returning false.
 
 
 
@@ -617,8 +652,16 @@ console.log(_.pluck(man, 'dude')); //
 *   _.some([1,2,3], function(e){return e % 2 === 0}) -> true
 */
 
+_.some = function(col, func) {
 
 
+
+
+
+
+
+
+}
 
 
 
@@ -645,6 +688,16 @@ console.log(_.pluck(man, 'dude')); //
 */
 
 
+_.reduce = function(arr, func, seed) {
+
+
+
+
+
+
+
+
+}
 
 
 
@@ -666,6 +719,17 @@ console.log(_.pluck(man, 'dude')); //
 *   _.extend(data, {b:"two"}); -> data now equals {a:"one",b:"two"}
 *   _.extend(data, {a:"two"}); -> data now equals {a:"two"}
 */
+
+_.extend = function(obj1, obj2) {
+
+
+
+
+
+
+
+
+}
 
 
 
