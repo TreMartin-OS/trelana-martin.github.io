@@ -626,6 +626,7 @@ return answer;
 
 console.log(_.every({a: '1', b: '2', c: '3'})); // pass in obj with No func
 // This is returning true, spec runner claims its returning false.
+// Adding this to save new io set up so I have a change to save
 
 
 
