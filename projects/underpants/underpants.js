@@ -533,19 +533,19 @@ console.log('Go back to #13 to add _.map()');
 
 
 _.every = function(col, func) {
-
-// Missed this, every single element must be true to return true.  So if somethign in an arr is true, push something to a new arr, if false, dont. then compare arr lengths.
+ 
+// Every single element must be true to return true.  So if something in an arr is true, push something to a new arr, if false, dont. then compare arr lengths.
 let truFal = [];
 let answer;
 
 // Check if func is provided
 if (func === undefined) { // If func is NOT provided /////
     // nested if-elses to check if this an array or object
-    if (Array.isArray(col)) { // // if array
+    if (Array.isArray(col) === true) { // // if array
         // For Loop for Arrays
         for (let x = 0; x < col.length; x++) {
             // If true, push to storage arr
-            if (col[x] === true) { 
+            if (col[x]) { 
                 truFal.push(col[x]);
             } 
         }  
@@ -567,12 +567,6 @@ if (func === undefined) { // If func is NOT provided /////
                 truFal.push(col[key]);
             } 
         }
-        ////////////////////////////////////////////////////////////
-        console.log(keyCount);
-        console.log(truFal);
-        console.log(keyCount.length);
-        console.log(truFal.length);
-        ////////////////////////////////////////////////////////////
         if (keyCount.length === truFal.length) { 
             answer = true;
         } else {
@@ -580,6 +574,7 @@ if (func === undefined) { // If func is NOT provided /////
         }
     }
 }
+// 4 & 5 wont pass when above is commented out. When visible, 5 passes but not 4. 
 
 if (func !== undefined) { // If the func IS provided
     // check if this an array or object
@@ -587,7 +582,7 @@ if (func !== undefined) { // If the func IS provided
         // For Loop for Arrays
         for (let x = 0; x < col.length; x++) {
             // Use the callback function to pass in the wanted info (element, index, collection)
-            if (func(col[x], x, col) === true) {
+            if (func(col[x], x, col)) { 
                 truFal.push(col[x]);;
             } 
         }
@@ -619,15 +614,9 @@ if (func !== undefined) { // If the func IS provided
     }
 }  
 
-// compare arrays
 
 return answer;
 }
-
-console.log(_.every({a: '1', b: '2', c: '3'})); // pass in obj with No func
-// This is returning true, spec runner claims its returning false.
-// Adding this to save new io set up so I have a change to save
-
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -655,13 +644,77 @@ console.log(_.every({a: '1', b: '2', c: '3'})); // pass in obj with No func
 
 _.some = function(col, func) {
 
+// Same as _.every() EXCEPT only return true if at least 1 thing is true
+// If something in an arr is true, push it to storage arr, if false, dont. 
+// Then check if storage arr length is more than 0.
 
+let truFal = [];
+let answer;
 
-
-
-
-
-
+// Check if func is provided
+if (func === undefined) { // If no func
+    // nested if-elses to check if this an array or object
+    if (Array.isArray(col) === true) { // if yes array
+        // For Loop for Arrays
+        for (let x = 0; x < col.length; x++) {
+            // If true, push to storage arr
+            if (col[x]) { 
+                truFal.push(col[x]);
+            } 
+        }  
+        if (truFal.length > 0) { // Does storage arr contain anything?
+            answer = true;
+        } else {
+            answer = false;
+        }
+    } 
+    else { // // if object
+        // For In loop for Objects
+        for (let key in col) {
+            // If true, push to storage arr
+            if (col[key]) {
+                truFal.push(col[key]);
+            } 
+        }
+        if (truFal.length > 0) { // Does storage arr contain anything?
+            answer = true;
+        } else {
+            answer = false;
+        }
+    }
+}
+if (func !== undefined) { // If yes func
+    // is this an array or object
+    if (Array.isArray(col)) { // if Yes array
+        // For Loop for Arrays
+        for (let x = 0; x < col.length; x++) {
+            // Use the callback function to pass in the wanted info (element, index, collection)
+            if (func(col[x], x, col)) { 
+                truFal.push(col[x]);;
+            } 
+        }
+        if (truFal.length > 0) { // Does storage arr contain anything?
+            answer = true;
+        } else {
+            answer = false;
+        }
+    }
+    else { // if Yes object
+        // For In loop for Objects
+        for (let key in col) {
+            // Use te Callback function to pass in the wanted info (value, key, collection)
+            if (func(col[key], key, col)) {
+                truFal.push(col[key]);;
+            } 
+        }
+        if (truFal.length > 0) { // Does storage arr contain anything?
+            answer = true;
+        } else {
+            answer = false;
+        }
+    }
+}  
+return answer; 
 }
 
 
@@ -693,6 +746,11 @@ _.reduce = function(arr, func, seed) {
 
 
 
+// Loop thru arr
+// Run func on every element using the args: previous result, element, index
+// On the 1st iteration use 'seed' for prev result, after that use the return val of the func for your "Previous result"
+// If there is no 'seed' use the 1st item in the arr/col as seed/PrevRes
+// after last iteration, return the return value of the final function call
 
 
 
@@ -721,10 +779,13 @@ _.reduce = function(arr, func, seed) {
 *   _.extend(data, {a:"two"}); -> data now equals {a:"two"}
 */
 
-_.extend = function(obj1, obj2) {
+_.extend = function(obj1, obj2) { // Look up how to accept an unknown # of params
 
 
-
+// loop thru Obj2 & beyond
+// Compare contents to obj1
+// If obj2+ have any info that obj1 doesnt, copy it to obj1
+// after all obj2+s have been checked & info copied to obj1, return obj1
 
 
 
