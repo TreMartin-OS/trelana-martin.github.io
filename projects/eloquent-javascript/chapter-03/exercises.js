@@ -2,33 +2,84 @@
 // min /////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function min() {
-
+function min(one, two) {
+return Math.min(one, two);  
 }
+// console.log(min(2, 7));
 
 ////////////////////////////////////////////////////////////////////////////////
 // isEven //////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function isEven() {
+function isEven(num) {
+
+//   // V1 passes despite lack of recursion used
+// if (num % 2 === 0) {
+// return true
+// } else {
+//   return false;
+// }
+
+// V2 following EJ site solution
+if (num == 0) { // I have no idea why '==' can replace '% ='
+  return true
+} else if (num == 1) {
+    return false;
+} else if (num < 0) {
+   return isEven(-num) // I dont get the point of this or the next line
+} else {
+  return isEven(num - 2)
+}
 
 }
+// console.log(isEven(-8));
 
 ////////////////////////////////////////////////////////////////////////////////
 // countChars //////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function countChars() {
-
+function countChars(str, char) {
+// storage array
+let storage = [];
+  // split str into an array of individual characters
+let check = str.split('');
+// Loop over arr to find characters that match char
+for (let x = 0; x < check.length; x++) {
+  if (check[x] == char) { // there's gotta be a simpler way to check upper & lower case, this only checks 1 case
+  // if (check[x] === char.toLowerCase() || check[x] === char.toUpperCase()) {
+    storage.push(check[x]);
+  }
 }
+return storage.length;
+}
+// console.log(countChars('Bark bork bork Bark', 'B'));
 
 ////////////////////////////////////////////////////////////////////////////////
 // countBs /////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function countBs() {
+function countBs(str) {
+
+// 2nd pas using countChars /////
+return countChars(str, 'B')
+
+
+// // First pass without countChars /////
+// // storage array
+// let storage = [];
+//   // split str into an array of individual characters
+// let check = str.split('');
+// // Loop over arr to find characters that match char
+// for (let x = 0; x < check.length; x++) {
+//   if (check[x] === 'B') {
+//     storage.push(check[x]);
+//   }
+// }
+// return storage.length;
 
 }
+console.log(countBs('Bark bork bork Bark'));
+
 
 ////////////////////////////////////////////////////////////////////////////////
 // DON'T REMOVE THIS CODE //////////////////////////////////////////////////////
