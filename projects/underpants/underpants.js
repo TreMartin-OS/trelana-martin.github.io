@@ -744,22 +744,31 @@ return answer;
 
 _.reduce = function(arr, func, seed) {
 
+// 1 min into vid 2: how to use 1st item in colection as a seed.
+// initialize an output variable that we will accumulate & return at the end 
+let output;
 
-
-// Loop thru arr
-// Run func on every element using the args: previous result, element, index
-// On the 1st iteration use 'seed' for prev result, after that use the return val of the func for your "Previous result"
-// If there is no 'seed' use the 1st item in the arr/col as seed/PrevRes
-// after last iteration, return the return value of the final function call
-
-
-
-
-
+// #4 - need separate instructions for when there is NO seed
+if (seed === undefined) {
+    // Take 1st item in arr & make it our seed
+    output = arr[0];
+    // For loop to iterate thru array/collection
+    for (let x = 1; x < arr.length; x++) { // Starting at 1 instead of 0 because 0 is the seed/starting point
+        // reassign output to result of involking callback function
+        output = func(output, arr[x], x); // From objective #1
+    }
+} else { // Else is for when there IS a seed value
+    // output will now be the seed that was entered
+    output = seed;
+    // Loop again & run info thru func
+    for (let x = 0; x < arr.length; x++) { // This can start at 0 since we dont need to use the 1st index of the arr/col
+        output = func(output, arr[x], x);
+    }
 }
-
-
-
+// return output for whichever version (seed or no seed) was run
+return output;
+}
+// I THINK I get whats going on here?
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
