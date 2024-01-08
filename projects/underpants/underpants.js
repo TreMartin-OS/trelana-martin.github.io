@@ -67,7 +67,6 @@ stringVal = 'null'
 };
 
 
-
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 // #3
 /** _.first
@@ -102,9 +101,7 @@ return arr;
 else {
 return arr.slice(0, num);
 }
-
 };
-
 
 
 
@@ -175,13 +172,10 @@ for (let x = 0; x < arr.length; x++) {
         return x;
     } 
 }
-    // if val doesnt exist in array, return -1     
-if (stuff === false) {
+if (stuff === false) {  // if val doesnt exist in array, return -1  
         return -1;
     }
-
 }
-// console.log(_.indexOf([1, 2, 3, 1, 4, 5, 6, 1], 1));
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -203,7 +197,6 @@ if (stuff === false) {
 
 _.contains = function(arr, val) {
 
-
 // storage var
 let truFal = [];
 // loop thru array checking for val
@@ -214,12 +207,8 @@ for (let x = 0; x < arr.length; x++) {
    }
     // if val is found, return true & if val is not found, return false (Use ternary operator)
 let answer = truFal.length > 0 ? true : false; 
-
 return answer;
 }
-
-// console.log(_.contains(['a', 'b', 'c', 'd'], 'c')); // Returns true
-
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -288,8 +277,7 @@ for (let a = 0; a < arr.length; a++) {
 }   
 return newList;
 }
-// Why do red arrows keep appearing on the line counter then vanishing when I leave a comment about them
-// Why does this function have a squiggly blue line down the line number counter
+
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -321,10 +309,9 @@ for (let a = 0; a < arr.length; a++) {
     if (func(arr[a], a, arr) === true) { 
         // if returned true, push element to storage arr
         newArr.push(arr[a]);
-}
+    }
 }
 return newArr;
-
 }
 
 
@@ -354,11 +341,9 @@ for (let a = 0; a < arr.length; a++) {
     if (func(arr[a], a, arr) === false) { 
         // if returned true, push element to storage arr
         newArr.push(arr[a]);
-}
+    }
 }
 return newArr;
-
-
 }
 
 
@@ -432,7 +417,6 @@ _.map = function(col, func) {
     
 // create storage array
 let mapStorage = [];
-    
 // is this an array or object
 if (Array.isArray(col)) { // // if array
     // For Loop for Arrays
@@ -453,9 +437,6 @@ if (Array.isArray(col)) { // // if array
 return mapStorage;
 }
 
-
-
-
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 // #13
 /** _.pluck
@@ -472,56 +453,14 @@ return mapStorage;
 
 _.pluck = function(arr, prop) {
 
-// Try 2: To do: figure out how _.map is suppossed to be useful for this *************************************************
-// loop thru array of objects, pull all values from the keys, add them to storage array, must use _.map()
-// _.map() returns an array of objects that have been sorted into true arr & false arrs
+// Try 3: _.map() returns an array of objects that have been sorted into true arr & false arrs
 
 // storage array
 let storage = [];
-
-
-// Loop thru arr
-for (let x = 0; x < arr.length; x++) {
-    // look thru objects with for in loop for the prop
-    for (let key in arr[x]) {
-        // if key === prop push the value to storage arr
-        if (key === prop) {
-            storage.push(arr[x][key]);
-        }
-    }
-}
-
-
-
-// Take 1: No _.map() version /////////////
-// // storage array
-// let storage = [];
-
-// // Loop thru arr
-// for (let x = 0; x < arr.length; x++) {
-//     // look thru objects with for in loop for the prop
-//     for (let key in arr[x]) {
-//         // if key === prop push the value to storage arr
-//         if (key === prop) {
-//             storage.push(arr[x][key]);
-//         }
-//     }
-// } //////////////////////////////////////
-
-
-
+// Is this what the instructions want?
+_.map(arr, function(arr) { if (Object.keys(arr).includes(prop)) {storage.push(arr[prop]);}});
 return storage;
 }
-
-// Testing OBJ
-var man = [
-    { dude: "Ralph", bro: 22},
-    { dude: "Jimmy", bro: 13},
-    { dude: "Carla", bro: 20}
-];
-
-console.log(_.pluck(man, 'dude')); // 
-
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -574,8 +513,6 @@ if (func === undefined) { // If func is NOT provided /////
     else { // // if object
         // Obj key array to compare lengths later because objs dont have lengths
         let keyCount = Object.keys(col);
-        // console.log(keyCount);
-
         // For In loop for Objects
         for (let key in col) {
             // If true, push to storage arr
@@ -589,10 +526,7 @@ if (func === undefined) { // If func is NOT provided /////
             answer = false;
         }
     }
-}
-// 4 & 5 wont pass when above is commented out. When visible, 5 passes but not 4. 
-
-if (func !== undefined) { // If the func IS provided
+} if (func !== undefined) { // If the func IS provided
     // check if this an array or object
     if (Array.isArray(col)) { // // if array
         // For Loop for Arrays
@@ -607,13 +541,9 @@ if (func !== undefined) { // If the func IS provided
         } else {
             answer = false;
         }
-
-    }
-    else { // // if object
+    } else { // // if object
         // Obj key array to compare lengths later
         let keyCount = Object.keys(col);
-        // console.log(keyCount);
-
         // For In loop for Objects
         for (let key in col) {
             // Use te Callback function to pass in the wanted info (value, key, collection)
@@ -628,9 +558,7 @@ if (func !== undefined) { // If the func IS provided
             answer = false;
         }
     }
-}  
-
-
+}
 return answer;
 }
 
@@ -663,7 +591,6 @@ _.some = function(col, func) {
 // Same as _.every() EXCEPT only return true if at least 1 thing is true
 // If something in an arr is true, push it to storage arr, if false, dont. 
 // Then check if storage arr length is more than 0.
-
 let truFal = [];
 let answer;
 
@@ -733,9 +660,6 @@ if (func !== undefined) { // If yes func
 return answer; 
 }
 
-
-
-
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 // #16
 /** _.reduce
@@ -760,10 +684,8 @@ return answer;
 
 _.reduce = function(arr, func, seed) {
 
-// 1 min into vid 2: how to use 1st item in colection as a seed.
 // initialize an output variable that we will accumulate & return at the end 
 let output;
-
 // #4 - need separate instructions for when there is NO seed
 if (seed === undefined) {
     // Take 1st item in arr & make it our seed
@@ -784,7 +706,6 @@ if (seed === undefined) {
 // return output for whichever version (seed or no seed) was run
 return output;
 }
-// I THINK I get whats going on here?
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -806,7 +727,6 @@ return output;
 
 _.extend = function(obj1, ...obj2) { // rest param is used to accept an unknown # of params
 
-
 // If statement for when its an Array
 if (Array.isArray(obj2)) {
     // For loop thru arrays
@@ -817,8 +737,7 @@ if (Array.isArray(obj2)) {
             obj1[keys] = obj2[x][keys];
         }
     }
-} // Else statement for when its an Object
-else {
+} else { // Else statement for when its an Object
     // loop thru Obj2 & beyond: For-In loop
     for (let keys in obj2) {
         // Compare contents to obj1
@@ -828,12 +747,10 @@ else {
             // console.log(obj1); // checking changed contents
         }
     }
-    }
-
+}
 // after all obj2+s have been checked & info copied to obj1, return obj1
 return obj1;
 }
-
 
 
 
