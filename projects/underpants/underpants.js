@@ -472,15 +472,14 @@ return mapStorage;
 
 _.pluck = function(arr, prop) {
 
+// Try 2: To do: figure out how _.map is suppossed to be useful for this *************************************************
+// loop thru array of objects, pull all values from the keys, add them to storage array, must use _.map()
+// _.map() returns an array of objects that have been sorted into true arr & false arrs
+
 // storage array
 let storage = [];
 
-// Try 2: To do: figure out how _.map is suppossed to be useful for this *************************************************
-// loop thru array of objects, pull all values from the keys, add them to storage array, must use _.map()
-// _.map() returns an array of objects that have been sored into true arr & false arrs
 
-
-// Try 1 - passes all tests without using _.map() ************************************************************************
 // Loop thru arr
 for (let x = 0; x < arr.length; x++) {
     // look thru objects with for in loop for the prop
@@ -493,18 +492,35 @@ for (let x = 0; x < arr.length; x++) {
 }
 
 
+
+// Take 1: No _.map() version /////////////
+// // storage array
+// let storage = [];
+
+// // Loop thru arr
+// for (let x = 0; x < arr.length; x++) {
+//     // look thru objects with for in loop for the prop
+//     for (let key in arr[x]) {
+//         // if key === prop push the value to storage arr
+//         if (key === prop) {
+//             storage.push(arr[x][key]);
+//         }
+//     }
+// } //////////////////////////////////////
+
+
+
 return storage;
 }
 
-// // Testing OBJ
-// var man = [
-//     { dude: "Ralph", bro: 22},
-//     { dude: "Jimmy", bro: 13},
-//     { dude: "Carla", bro: 20}
-// ];
+// Testing OBJ
+var man = [
+    { dude: "Ralph", bro: 22},
+    { dude: "Jimmy", bro: 13},
+    { dude: "Carla", bro: 20}
+];
 
-// console.log(_.pluck(man, 'dude')); // 
-console.log('Go back to #13 to add _.map()');
+console.log(_.pluck(man, 'dude')); // 
 
 
 
@@ -788,22 +804,35 @@ return output;
 *   _.extend(data, {a:"two"}); -> data now equals {a:"two"}
 */
 
-_.extend = function(obj1, obj2) { // Look up how to accept an unknown # of params
+_.extend = function(obj1, ...obj2) { // rest param is used to accept an unknown # of params
 
 
-// loop thru Obj2 & beyond
-// Compare contents to obj1
-// If obj2+ have any info that obj1 doesnt, copy it to obj1
+// If statement for when its an Array
+if (Array.isArray(obj2)) {
+    // For loop thru arrays
+    for (let x = 0; x < obj2.length; x++) {
+        // Look inside the objects inside the arrays
+        for (let keys in obj2[x]) {
+            // Add data from obj2[x]s to obj1
+            obj1[keys] = obj2[x][keys];
+        }
+    }
+} // Else statement for when its an Object
+else {
+    // loop thru Obj2 & beyond: For-In loop
+    for (let keys in obj2) {
+        // Compare contents to obj1
+        if (obj2[keys] !== obj1[keys]) {
+            // If obj2+ have any info that obj1 doesnt, copy it to obj1
+            obj1[obj2][keys];
+            // console.log(obj1); // checking changed contents
+        }
+    }
+    }
+
 // after all obj2+s have been checked & info copied to obj1, return obj1
-
-
-
-
-
+return obj1;
 }
-
-
-
 
 
 
