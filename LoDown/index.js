@@ -52,7 +52,7 @@ module.exports.identity = identity;
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 // #2
 /**
-Name: Function that accepts 
+TypeOf: Function that accepts 
 @param {} : Accepts .
 @param {} : Accepts .
 @returns {} : Returns .
