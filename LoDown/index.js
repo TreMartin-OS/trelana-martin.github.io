@@ -134,10 +134,10 @@ module.exports.last = last;
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 // #5
 /**
-indexOf: Function that accepts an Array & a Value input, then returns a matching Value from the Array if it exists.
+indexOf: Function that accepts an Array & a Value input, then returns the index of a matching Value from the Array if it exists.
 @param { Array } arr: Accepts an Array of values.
 @param { * } val: Accepts any Data type that can be added to an array.
-@returns { * } x or -1: Returns the element in the Array that matches the Value input, or a -1 if one is not present.
+@returns { * } x or -1: Returns the index of the element in the Array that matches the Value input, or a -1 if one is not present.
 */
 
 function indexOf(arr, val) {
@@ -161,10 +161,10 @@ module.exports.indexOf = indexOf;
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 // #6
 /**
-Contains: Function that accepts 
-@param {} : Accepts .
-@param {} : Accepts .
-@returns {} : Returns .
+Contains: Function that accepts an Array & a Value, then returns True if the Array contains the Value, False if it doesn't.
+@param { Array } arr: Accepts an Array of Elements.
+@param { * } val: Accepts any Value that can be added to an Array.
+@returns { Boolean } answer: Returns True if Array contains the Value input, False if not.
 */
 
 function contains(arr, val) {
@@ -187,10 +187,12 @@ module.exports.contains = contains;
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 // #7
 /**
-Name: Function that accepts 
-@param {} : Accepts .
-@param {} : Accepts .
-@returns {} : Returns .
+Each: Function that accepts a Collection (Array or Object) & a Function.
+Each Element is run through the Function with the arguments: Element/Property value, Index/Key, & the Collection. 
+Doesn't appear to Return anything.
+@param { Array or Object } col: Accepts a Collection, which will be an Array or Object.
+@param { Function } func: Accepts a Function.
+@returns { ? } : Returns nothing? It doesnt ave the info anywhere, it doesn't say what the func does, no instructions to log to the Console.
 */
 
 function each(col, func) {
@@ -216,10 +218,9 @@ module.exports.each = each;
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 // #8
 /**
-Name: Function that accepts 
-@param {} : Accepts .
-@param {} : Accepts .
-@returns {} : Returns .
+NewList: Function that accepts an Array, runs each Element through the indexOf Function, pushes each Element to a new Array unless its a duplicate, Returns that new Array.
+@param { Array } arr: Accepts an array of Elements.
+@returns { Array } newList: Returns a new array of all Elements from the Array input with duplicates removed.
 */
 
 function unique(arr) {
@@ -243,10 +244,11 @@ module.exports.unique = unique;
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 // #9
 /**
-Name: Function that accepts 
-@param {} : Accepts .
-@param {} : Accepts .
-@returns {} : Returns .
+Filter: Function that accepts an Array & a Function, runs every Element of the Array through the Function to check for True or False.
+If result is True, Element is pushed to a new storage Array that gets Returned at the end. 
+@param { Array } arr: Accepts an Array of Elements.
+@param { Function } func: Accepts a Function tht will be run on every Element in the Array.
+@returns { Array } newArr: Returns a new array of elements that returned True after running through the Function.
 */
 
 function filter(arr, func) {
@@ -269,10 +271,11 @@ module.exports.filter = filter;
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 // #10
 /**
-Name: Function that accepts 
-@param {} : Accepts .
-@param {} : Accepts .
-@returns {} : Returns .
+Reject: Function that accepts an Array & a Function. Every Element of the Array is run through the Function using: Element, the Elements Index, & the entire Arr.
+If the result of the Function is True, the Element is pushed into a new storge Array.
+@param { Array } arr: Accepts an Array of Elements.
+@param { Function } func: Accepts a Function to be run on every element along with its Index & the entire Array.
+@returns { Array } newArr: Returns a new Array of items from the previous Array that returned True after running through the Function.
 */
 
 function reject(arr, func) {
@@ -280,7 +283,7 @@ function reject(arr, func) {
 let newArr = [];
 // Loop thru arr
 for (let a = 0; a < arr.length; a++) {
-    // run every element thru func using: element, indenx, the entire arr & check if func returned true
+    // run every element thru func using: element, index, the entire arr & check if func returned true
     if (func(arr[a], a, arr) === false) { 
         // if returned true, push element to storage arr
         newArr.push(arr[a]);
@@ -294,10 +297,11 @@ module.exports.reject = reject;
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 // #11
 /**
-Name: Function that accepts 
-@param {} : Accepts .
-@param {} : Accepts .
-@returns {} : Returns .
+Parition: Function that accepts an Array & a Function. Every Element is run through the Array to determine if True or False.
+True Elements are pushed to 1 storage Array, False elements to another. Both Arrays are then pushed to a 3rd storage Array.
+@param { Array } arr: Accepts an Array of Elements.
+@param { Function } func: Accepts a Function that is run on every Element in the Array.
+@returns { Array } arr03: Returns an Array that contains another Array full of True Elements then another Array full of False Elements.
 */
 
 function partition(arr, func) {
@@ -362,10 +366,11 @@ module.exports.map = map;
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 // #13
 /**
-Name: Function that accepts 
-@param {} : Accepts .
-@param {} : Accepts .
-@returns {} : Returns .
+Pluck: Function that accepts an Array of Objects & a Property (Key).
+The Map Function is used to find the Objects in the Array that contain the Property (Key) then pushes its Value to a new storage Array.
+@param { Array } arr: Accepts an Array of Objects.
+@param { Property } prop: Accepts a Property (Key).
+@returns { Array } storage: Returns a new storage Array of Values that were in the Objects connected to the Property (Key) input.
 */
 
 function pluck(arr, prop) {
@@ -382,10 +387,13 @@ module.exports.pluck = pluck;
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 // #14
 /**
-Name: Function that accepts 
-@param {} : Accepts .
-@param {} : Accepts .
-@returns {} : Returns .
+Every: Function that accepts a Collection & Function. The Function is run through every Element in the Collection.
+If EVERY Element in the Collection returns True after being run through the input Function, the Every Function returns True. Otherwise, it Returns False.
+If no Function is provided, code checks if Element is Truthy (Exists?) & applies the same rules as above.
+@param { Array or Object} col: Accepts an Array or Object as a Collection.
+@param { Function } func: Accepts a Function that is run on every Element of the Collection.
+@returns { Boolean } answer: Returns True If the return value of calling the input Function for every Element is True. If even 1 Element Returns False, Return False.
+If there is no Function, Return True if every Element is Truthy, otherwise Return False
 */
 
 function every(col, func) {
@@ -466,10 +474,13 @@ module.exports.every = every;
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 // #15
 /**
-Name: Function that accepts 
-@param {} : Accepts .
-@param {} : Accepts .
-@returns {} : Returns .
+Some: Function that accepts an Array or Object as a Collection & a callback Function. The Function is run through every Element in the Collection.
+If EVEN ONE(1) Element in the Collection returns True after being run through the input/callback Function, the Some Function returns True.
+If no Function is provided, code checks if Element is Truthy (Exists?) & applies the same rules as above.
+@param { Array or Object} col: Accepts an Array or Object as a Collection.
+@param { Function } func: Accepts a Function that will be run on every Element in the Collection.
+@returns { Boolean } answer: Returns True if the result of calling the callback Function is True for at least one element. Otherwise, it Returns False.
+If a Function is not provided, Return True if at least one element is Truthy, otherwise return False.
 */
 
 function some(col, func) {
@@ -549,10 +560,13 @@ module.exports.some = some;
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 // #16
 /**
-Name: Function that accepts 
-@param {} : Accepts .
-@param {} : Accepts .
-@returns {} : Returns .
+Reduce: Function that accepts an Array, a Function, and a Seed. The Function is run on every Element in the Array using: Previous Result (Seed), Element, & Index.
+Function Returns the the last Element from the input Array after it has been run through the Function.
+If no Seed is provided, the 0index item of the Arrayis treated as the Seed.
+@param { Array } arr: Accepts an Array as a Collection.
+@param { Function } func: Accepts a Function to be run on every Element in the Array.
+@returns { *? } output: Returns the last Element from the input Array after it has been run through the Function.
+!! Output may be an Object if the Array is a Collection of Objects. Not enough information provided.
 */
 
 function reduce(arr, func, seed) {
@@ -584,10 +598,12 @@ module.exports.reduce = reduce;
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 // #17
 /**
-Name: Function that accepts 
-@param {} : Accepts .
-@param {} : Accepts .
-@returns {} : Returns .
+Extend: Function that accepts a starter Object, then an unknown number of other Objects. Every Object is compared to the 1st Object.
+If Object1 is missing Data present in Object?, the data is copied into Object 1.
+If both Objects have a matching Property/Key, the Value of Object1 is replaced with the Value if Object?. 
+@param { Object } obj1: Accepts an Object that will be updated.
+@param { Object(s) } ...obj2: Accepts several Objects whose Data will be added to Object1.
+@returns { Object } obj1: Returns Object1 after being updated by all the other Object?s.
 */
 
 function extend(obj1, ...obj2) { // rest param is used to accept an unknown # of params
