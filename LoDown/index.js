@@ -38,8 +38,8 @@ module.exports.each = each;
 // #1
 /**
 Identity: Function that accepts an input value & returns it unchaged.
-@param { * } value: Accepts any input
-@returns { * } value: Returns that same input
+@param { * } value: Accepts any Data type as input.
+@returns { * } value: Returns that same input unaltered.
 */
 
 
@@ -52,12 +52,11 @@ module.exports.identity = identity;
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 // #2
 /**
-TypeOf: Function that accepts 
-@param {} : Accepts .
-@param {} : Accepts .
-@returns {} : Returns .
+TypeOf: Function that accepts any Value & returns its Data Type as a String.
+@param { * } value: Accepts any Data Type as input.
+@returns { String } stringVal: Returns the Data type of value in String form.
 */
-
+ 
 
 function typeOf(value) {
 
@@ -79,10 +78,12 @@ module.exports.typeOf = typeOf;
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 // #3
 /**
-Name: Function that accepts 
-@param {} : Accepts .
-@param {} : Accepts .
-@returns {} : Returns .
+First: Function that accepts an Array & a Number then returns the 1st of number of items in the array. 
+If value entered for Array is not an Array it returns an empty Array. If no Number is entered, the 1st element in the Array is returned. 
+!! May need to add case for if number is negative or if Number input is greater than the Arrays length.
+@param { Array } arr: Accepts an array of items.
+@param { Number } num: Accepts a number.
+@returns { Array } arr.slice: Returns array of items starting at 0 index until the index that matches the Number input.
 */
 
 function first(arr, num) {
@@ -107,10 +108,10 @@ module.exports.first = first;
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 // #4
 /**
-Name: Function that accepts 
-@param {} : Accepts .
-@param {} : Accepts .
-@returns {} : Returns .
+Last: Function that accepts an Array & a Number, then returns Number of items from the Array starting at the end & working back towards the 0 index. 
+@param { Array } arr: Accepts an Array of items.
+@param { Number } num: Accepts a Number.
+@returns { Array } arr.slice: Returns a slice of the Input Array starting at the last index & counting back Number input times. 
 */
 
 function last(arr, num) {
@@ -133,10 +134,10 @@ module.exports.last = last;
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 // #5
 /**
-Name: Function that accepts 
-@param {} : Accepts .
-@param {} : Accepts .
-@returns {} : Returns .
+indexOf: Function that accepts an Array & a Value input, then returns a matching Value from the Array if it exists.
+@param { Array } arr: Accepts an Array of values.
+@param { * } val: Accepts any Data type that can be added to an array.
+@returns { * } x or -1: Returns the element in the Array that matches the Value input, or a -1 if one is not present.
 */
 
 function indexOf(arr, val) {
@@ -160,7 +161,7 @@ module.exports.indexOf = indexOf;
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 // #6
 /**
-Name: Function that accepts 
+Contains: Function that accepts 
 @param {} : Accepts .
 @param {} : Accepts .
 @returns {} : Returns .
