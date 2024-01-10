@@ -218,7 +218,7 @@ module.exports.each = each;
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 // #8
 /**
-NewList: Function that accepts an Array, runs each Element through the indexOf Function, pushes each Element to a new Array unless its a duplicate, Returns that new Array.
+Unique: Function that accepts an Array, runs each Element through the indexOf Function, pushes each Element to a new Array unless its a duplicate, Returns that new Array.
 @param { Array } arr: Accepts an array of Elements.
 @returns { Array } newList: Returns a new array of all Elements from the Array input with duplicates removed.
 */
@@ -562,7 +562,7 @@ module.exports.some = some;
 /**
 Reduce: Function that accepts an Array, a Function, and a Seed. The Function is run on every Element in the Array using: Previous Result (Seed), Element, & Index.
 Function Returns the the last Element from the input Array after it has been run through the Function.
-If no Seed is provided, the 0index item of the Arrayis treated as the Seed.
+If no Seed is provided, the 0-index item of the Arrayis treated as the Seed.
 @param { Array } arr: Accepts an Array as a Collection.
 @param { Function } func: Accepts a Function to be run on every Element in the Array.
 @returns { *? } output: Returns the last Element from the input Array after it has been run through the Function.

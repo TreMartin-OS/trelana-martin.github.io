@@ -15,26 +15,33 @@ var _ = require("underbar"); // Importing underbar library
  * 3. We started the first one for you as an example! Make the rest in that style.
  *
  * 4. To test your work, run the following command in your terminal:
- *
- *    npm start --prefix ./<YOUR_GITHUB_FOLDER/projects/let-s-get-functional 
+ *  a. cd .. <= 'cd-space-2periods' - type & submit that 1 at a time until the terminal reads: gitpod /workspace $ 
+ *  b. npm start --prefix ./<YOUR_GITHUB_FOLDER/projects/let-s-get-functional 
  *          npm start --prefix ./trelana-martin.github.io/projects/let-s-get-functional // <= Line you must paste into terminal to check if your codes are passing
- *    IMPORTANT: Make sure you replace <YOUR_GITHUB_FOLDER with your actual github folder name that is in your workspace.
+ *          ^ IMPORTANT: Make sure you replace <YOUR_GITHUB_FOLDER with your actual github folder name that is in your workspace.
+ *
+ * 5. To save your progress to GitHub the Terminal MUST be in your normal directory. You can either:
+ *  a. Close the Terminal & reopen it to reset back to your base directory.
+ *  b. Type & submit: cd & your full directory name => cd trelana-martin.github.io
  */
 
 /** 
  * README file has instructions for each problem.
  * All these Functions will interact with data in the customers.json file.
  * ^ Line 19-21 shows how to test if my code is passing.
- * filter(), map(), reduce(), & each() "You will have the most success with these" unsure what he means by that right now.
- * We have to use our methods to solve these, so we need to understand what they do.  EX:
+ * filter(), map(), reduce(), & each() - implied they will be needed the most
+ * We have to use our methods to solve these, so we need to understand what they do.  
+ * EX:
  *      filter = Iterates thru collection & only returns items that pass a test.
  *      map = Iterates thru collection & returns new collection of changed items.
- * 
+ *      reduce = adding some numbers together?
+ *      each - ??? Even with the completed LoDown docmentation, the modules purposes seem super vague
 */
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// #1
+// #1 - **Objective**: Find the number of male customers - **Input**: `Array` - **Output**: `Number` - **Constraints**: use `filter`
+
 var maleCount = function(arr) {
-//     // Lecture Example for solution without methods *************
+//////////////////// // Lecture Example for solution without methods *************
 //     // Counter var
 //     let males = 0;
 //     // For loop to go thru Array
@@ -47,64 +54,106 @@ var maleCount = function(arr) {
 //     }
 // return males;
 // };
-   // Lecture Example for solution with methods: Wants us to use filter() *************
+
+// //////////////////// // Lecture Example for solution with methods: Wants us to use filter() *************
+//     // Counter var
+//     let males = _.filter(arr, function(customer) {
+//         return customer.gender === 'male';
+//     });
+//     return males.length;
+
+//////////////////// // Lecture Example thats more efficient *************
     // Counter var
-    let males = _.filter(arr, function(customer) {
-        return customer.gender === 'male';
-    });
+    let males = _.filter(arr, (customer) => customer.gender === 'male');
+    return males.length;
 };
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// #2
-var femaleCount = function() {
+// #2 - **Objective**: Find the number of female customers - **Input**: `Array` - **Output**: `Number` - **Constraints**: use `reduce`
 
-};
+// var femaleCount = function(arr) {
 
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// #3
-var oldestCustomer = function() {
+// // ////// Solve w/out reduce first ///////////
+// let counter = 0;
+// for (let x = 0; x < arr.length; x++) {
+//     if (arr[x]['gender'] === 'female') {
+//         counter += 1;
+//     }
+// }
+// console.log(counter); // correctly returning 4 /////////
 
-};
-
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// #4
-var youngestCustomer = function() {
-
-};
-
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// #5
-var averageBalance = function() {
-
-};
-
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// #6
-var firstLetterCount = function() {
-
-};
+// //// Now solve using reduce() - Loop thru Arr, find every Element with 'female' in gender, add the numbers together, use reduce somehow (new array?)
+// // What does reduce even do? Runs a collection thru some unknown function but doesnt save anything but the seed, maybe?
+// let counter;
+// _.reduce(arr, function(customer) {if (customer.gender === 'female') { counter += 1; }} );
+// console.log(counter); // logs false when mimicing findmale code, logs nothing with this
+// return counter;
+// };
+// Ship until I actually understand what reduce even does
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// #7
-var friendFirstLetterCount = function() {
+// #3 - **Objective**: Find the oldest customer's name - **Input**: `Array` - **Output**: `String` - **Constraints**:
+
+var oldestCustomer = function(arr) {
+// Needs: Loop thru array, check value of 'age', compare ages to find highest, return 'name' value of person with highest age, use at least 1 method
+// Possible useful methods: .pluck()
+
 
 };
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// #8
-var friendsCount = function() {
+// #4 - **Objective**: Find the youngest customer's name - **Input**: `Array` - **Output**: `String` - **Constraints**:
+
+var youngestCustomer = function(arr) {
+// Needs: Loop thru array, check value of 'age', compare ages to find lowest, return 'name' value of person with lowest age, use at least 1 method
+
 
 };
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// #9
-var topThreeTags = function() {
+// #5 - **Objective**: Find the average balance of all customers - **Input**: `Array` - **Output**: `Number` - **Constraints**:
+
+var averageBalance = function(arr) {
+// Needs: Loop thru array, check value of 'balance', save them in a storage arr, convert them to integers, use math to find avg (divide total by number of people), use at least 1 method
+// Methods?: 
 
 };
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// #10
-var genderCount = function() {
+// #6 - **Objective**: Find how many customer's names begin with a given letter - **Input**: `Array`, `Letter` - **Output**: `Number` - **Constraints**:
+
+var firstLetterCount = function(arr, let) {
+// Need: loop thru Array, Can maybe use _.first() for this
+
+};
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// #7 - **Objective**: Find how many friends of a given customer have names that start with a given letter - **Input**: `Array`, `Customer`, `Letter` - **Output**: `Number` - **Constraints**:
+
+var friendFirstLetterCount = function(arr, cus, l) {
+// Need: 
+
+};
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// #8 - **Objective**: Find the customers' names that have a given customer's name in their friends list - **Input**: `Array`, `Name` - **Output**: `Array` - **Constraints**:
+
+var friendsCount = function(arr, n) {
+
+};
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// #9 - **Objective**: Find the three most common tags among all customers' associated tags - **Input**: `Array` - **Output**: `Array` - **Constraints**:
+
+var topThreeTags = function(arr) {
+
+};
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// #10 - **Objective**: Create a summary of genders, the output should be:```javascript{male: 3, female: 4, non-binary: 1}``` - **Input**: `Array` - **Output**: `Object` - **Constraints**: Use `reduce`
+
+var genderCount = function(arr) {
+// Reduce() is required
 
 };
 
