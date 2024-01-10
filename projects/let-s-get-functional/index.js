@@ -55,25 +55,40 @@ var maleCount = function(arr) {
 // return males;
 // };
 
-// //////////////////// // Lecture Example for solution with methods: Wants us to use filter() *************
-//     // Counter var
-//     let males = _.filter(arr, function(customer) {
-//         return customer.gender === 'male';
-//     });
-//     return males.length;
+//////////////////// // Lecture Example for solution with methods: Wants us to use filter() *************
+    // Counter var
+    let males = _.filter(arr, function(customer) {
+        return customer.gender === 'male';
+    });
+    return males.length;
 
 //////////////////// // Lecture Example thats more efficient *************
-    // Counter var
-    let males = _.filter(arr, (customer) => customer.gender === 'male');
-    return males.length;
+//     // Counter var
+//     let males = _.filter(arr, (customer) => customer.gender === 'male');
+//     return males.length;
 };
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // #2 - **Objective**: Find the number of female customers - **Input**: `Array` - **Output**: `Number` - **Constraints**: use `reduce`
 
-// var femaleCount = function(arr) {
+var femaleCount = function(arr) {
 
-// // ////// Solve w/out reduce first ///////////
+// I want this to go thru Arr (reduce should be), find every Element with 'female' in gender, Increase the counter by 1 for every gender: "female" found
+var string = _.reduce(arr, function(accumulator, current, index){ 
+    if (gender === 'female') {
+        accumulator += current;
+    } 
+return string;
+}, 0) 
+
+// // Create counter var
+// let counter = 0;
+// // Run Reduce on           Array                  to find female customers       & add them to a running total 
+// /**let count = */ _.reduce(arr, function(customer) { if (customer.gender === 'female') {return counter + 1;} } );
+// // return final count
+// return counter;    
+
+// // ////// Solved w/out Reduce ///////////
 // let counter = 0;
 // for (let x = 0; x < arr.length; x++) {
 //     if (arr[x]['gender'] === 'female') {
@@ -82,14 +97,9 @@ var maleCount = function(arr) {
 // }
 // console.log(counter); // correctly returning 4 /////////
 
-// //// Now solve using reduce() - Loop thru Arr, find every Element with 'female' in gender, add the numbers together, use reduce somehow (new array?)
-// // What does reduce even do? Runs a collection thru some unknown function but doesnt save anything but the seed, maybe?
-// let counter;
-// _.reduce(arr, function(customer) {if (customer.gender === 'female') { counter += 1; }} );
-// console.log(counter); // logs false when mimicing findmale code, logs nothing with this
-// return counter;
-// };
-// Ship until I actually understand what reduce even does
+};
+
+console.log(femaleCount(customers));
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // #3 - **Objective**: Find the oldest customer's name - **Input**: `Array` - **Output**: `String` - **Constraints**:
@@ -97,6 +107,16 @@ var maleCount = function(arr) {
 var oldestCustomer = function(arr) {
 // Needs: Loop thru array, check value of 'age', compare ages to find highest, return 'name' value of person with highest age, use at least 1 method
 // Possible useful methods: .pluck()
+
+
+// // ////// Solved w/out Methods ///////////
+// storage for name & age
+let objStore = {};
+// loop thru arr
+for (let x = 0; x < arr.length; x++) {
+// if next customer age is higher than previous, replace obj with hig
+
+}
 
 
 };
@@ -122,7 +142,7 @@ var averageBalance = function(arr) {
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // #6 - **Objective**: Find how many customer's names begin with a given letter - **Input**: `Array`, `Letter` - **Output**: `Number` - **Constraints**:
 
-var firstLetterCount = function(arr, let) {
+var firstLetterCount = function(arr, l) {
 // Need: loop thru Array, Can maybe use _.first() for this
 
 };

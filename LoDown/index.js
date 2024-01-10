@@ -562,11 +562,11 @@ module.exports.some = some;
 /**
 Reduce: Function that accepts an Array, a Function, and a Seed. The Function is run on every Element in the Array using: Previous Result (Seed), Element, & Index.
 Function Returns the the last Element from the input Array after it has been run through the Function.
-If no Seed is provided, the 0-index item of the Arrayis treated as the Seed.
+If no Seed is provided, the 0-index item of the Array is treated as the Seed.
 @param { Array } arr: Accepts an Array as a Collection.
 @param { Function } func: Accepts a Function to be run on every Element in the Array.
 @returns { *? } output: Returns the last Element from the input Array after it has been run through the Function.
-!! Output may be an Object if the Array is a Collection of Objects. Not enough information provided.
+!! Output may be an Object if the Array is a Collection of Objects? What does this even really do?
 */
 
 function reduce(arr, func, seed) {

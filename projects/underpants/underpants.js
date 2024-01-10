@@ -707,6 +707,26 @@ if (seed === undefined) {
 return output;
 }
 
+///////////////////////
+// use the _.reduce method to return a string of only the string values in the array
+
+var values = ["a", 1, "l", 2, "e", 3, "x"];
+
+var string = _.reduce(values, function(accumulator, current, index){
+        if (typeof current === 'number') {
+            accumulator += current;
+        } 
+    return accumulator;
+}, 0)
+
+console.log(string); // Printing 'alex' once to the console, as intended
+
+// storage var: output = undefined
+// if '' === undefined => False
+// Going to Else:
+    // now assigning output to ''
+    // x = 0
+        // output = func('', 'a', '0')
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 // #17
