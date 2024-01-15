@@ -92,21 +92,22 @@ var oldestCustomer = function(arr) {
 // Needs: Loop thru array, check value of 'age', compare ages to find highest, return 'name' value of person with highest age, use at least 1 method
 // Possible useful methods: .pluck()
 
-let oldest = _.filter(arr, function(current, prev) {
-    if (current.age > prev) {
-        prev = current.age
-    }
-});
-return current;
+// let oldest = _.pluck(arr, prop) {
+    // if (something is true) {
+    // something happens
+    // }
+// }
 
 };
+// Skip for now: I dont understand what 'Pluck' actually does
+
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // #4 - **Objective**: Find the youngest customer's name - **Input**: `Array` - **Output**: `String` - **Constraints**:
 
 var youngestCustomer = function(arr) {
 // Needs: Loop thru array, check value of 'age', compare ages to find lowest, return 'name' value of person with lowest age, use at least 1 method
-
+// Skip until I understand 'Pluck'
 
 };
 
@@ -117,23 +118,45 @@ var averageBalance = function(arr) {
 // Needs: Loop thru array, check value of 'balance', save them in a storage arr, convert them to integers, use math to find avg (divide total by number of people), use at least 1 method
 // Methods?: 
 
+
 };
+// Save for last as it requires more complicated code
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // #6 - **Objective**: Find how many customer's names begin with a given letter - **Input**: `Array`, `Letter` - **Output**: `Number` - **Constraints**:
 
-var firstLetterCount = function(arr, l) {
-// Need: loop thru Array, Can maybe use _.first() for this
+// How to solve with Method - It wants a count, so Reduce?
+var firstLetterCount = function(arr, letter) {
 
+// With Method    
+    let stoArr = arr.reduce(function(count, current){
+        if (current.name[0].toLowerCase() === letter.toLowerCase()) {
+          count += 1;
+    } return count;}, 0)
+    
+    return stoArr;
 };
+
+// console.log(firstLetterCount(customers, 'J')); // No method: return arr of objs of customers whose names start with 'J'
+console.log(firstLetterCount(customers, 'J'));  // WORKS NOW  
+
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// #7 - **Objective**: Find how many friends of a given customer have names that start with a given letter - **Input**: `Array`, `Customer`, `Letter` - **Output**: `Number` - **Constraints**:
+// #7 - **Objective**: Find how many friends of a given customer have names that start with a given letter
+//**Input**: `Array`, `Customer`, `Letter` - **Output**: `Number` - **Constraints**:
 
-var friendFirstLetterCount = function(arr, cus, l) {
-// Need: 
+var friendFirstLetterCount = function(arr, customer, letter) {
+// Need: a count - so Reduce? Expand on firstLetterCount?
 
+let stoArr = arr.reduce(function(count, current){
+    if (current.friends[0].toLowerCase() === letter.toLowerCase()) {
+      count += 1;
+} return count;}, 0)
+
+return stoArr;
 };
+console.log(friendFirstLetterCount((customers, 'Marco', 'J')));
+
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // #8 - **Objective**: Find the customers' names that have a given customer's name in their friends list - **Input**: `Array`, `Name` - **Output**: `Array` - **Constraints**:
