@@ -20,13 +20,12 @@ When your pages are done, send him screenshot of the 2 completed pages. <br>
 7) When prompted, enter github username and personal access token
 8) Select project
 * When you remake Gitpod, also remember to run => npm install -g opspark
-* Don't fforget to reinstall Live Server
+* Don't forget to reinstall Live Server
 
 ##  Difficulty Producing Tests (EX: "Lets Get Functional" testing)
 @ roughly 11 mins => https://screenpal.com/watch/cZVVrRVHysj
 1) Is your Terminal in the "workspace" cd/folder
 2) Did you type your github repo correctly (Line 19 with hint at 21)
-
 
 
 ## Git commands - to save changes back to GitHub

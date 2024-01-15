@@ -74,32 +74,16 @@ var maleCount = function(arr) {
 var femaleCount = function(arr) {
 
 // I want this to go thru Arr (reduce should be), find every Element with 'female' in gender, Increase the counter by 1 for every gender: "female" found
-var string = _.reduce(arr, function(accumulator, current, index){ 
-    if (gender === 'female') {
-        accumulator += current;
-    } 
-return string;
-}, 0) 
-
-// // Create counter var
-// let counter = 0;
-// // Run Reduce on           Array                  to find female customers       & add them to a running total 
-// /**let count = */ _.reduce(arr, function(customer) { if (customer.gender === 'female') {return counter + 1;} } );
-// // return final count
-// return counter;    
-
-// // ////// Solved w/out Reduce ///////////
-// let counter = 0;
-// for (let x = 0; x < arr.length; x++) {
-//     if (arr[x]['gender'] === 'female') {
-//         counter += 1;
-//     }
-// }
-// console.log(counter); // correctly returning 4 /////////
+let females = arr.reduce(function(acc=0, current) {
+    if (current.gender == "female") {
+          acc += 1;}
+      return acc;
+      },0
+    );
+    return females;
 
 };
-
-console.log(femaleCount(customers));
+// console.log(femaleCount(customers)) 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // #3 - **Objective**: Find the oldest customer's name - **Input**: `Array` - **Output**: `String` - **Constraints**:
@@ -108,16 +92,12 @@ var oldestCustomer = function(arr) {
 // Needs: Loop thru array, check value of 'age', compare ages to find highest, return 'name' value of person with highest age, use at least 1 method
 // Possible useful methods: .pluck()
 
-
-// // ////// Solved w/out Methods ///////////
-// storage for name & age
-let objStore = {};
-// loop thru arr
-for (let x = 0; x < arr.length; x++) {
-// if next customer age is higher than previous, replace obj with hig
-
-}
-
+let oldest = _.filter(arr, function(current, prev) {
+    if (current.age > prev) {
+        prev = current.age
+    }
+});
+return current;
 
 };
 
