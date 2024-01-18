@@ -148,14 +148,18 @@ console.log(firstLetterCount(customers, 'J'));  // WORKS NOW
 var friendFirstLetterCount = function(arr, customer, letter) {
 // Need: a count - so Reduce? Expand on firstLetterCount?
 
-let stoArr = arr.reduce(function(count, current){
-    if (current.friends[0].toLowerCase() === letter.toLowerCase()) {
-      count += 1;
-} return count;}, 0)
+let sArr = arr.reduce(function(acc, current) { // Remember current already includes the arr
+    if (current.name === customer) {   
+       for (let x = 0; x < current.friends.length; x++) { // WILL needFor Loop for friends Arr
+       if (current.friends[x].name[0].toLowerCase() === letter.toLowerCase()) {
+         // acc.push(current.friends[x].name); // Pushes all J names when my acc is an []
+         acc += 1;
+       }}}
+     return acc;}, 0);
 
-return stoArr;
+return sArr;
 };
-console.log(friendFirstLetterCount((customers, 'Marco', 'J')));
+// console.log(friendFirstLetterCount((customers, 'Marco', 'J')));
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
