@@ -199,17 +199,16 @@ var topThreeTags = function (arr) {
 
 var genderCount = function (arr) {
 
-    let thatsSoGender = arr.reduce(function (acc, current) {
+    let Gender = arr.reduce(function (acc, current) {
         if (acc.hasOwnProperty(current.gender)) {
-            acc[current.gender].push(current.name);
+            acc[current.gender] += 1;
         } else {
-            acc[current.gender] = []; 
-            acc[current.gender].push(current.name)
+            acc[current.gender] = 0; 
+            acc[current.gender] += 1;
         }
         return acc;
-    }, {})
-
-    return thatsSoGender;
+      }, {})
+      return Gender;
 };
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
