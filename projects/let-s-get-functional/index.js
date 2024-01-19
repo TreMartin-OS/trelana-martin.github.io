@@ -192,6 +192,27 @@ var friendsCount = function (arr, name) {
 
 var topThreeTags = function (arr) {
 
+// This is looking for matching whole arrs, I need it to look INSIDE the arrs
+let tagCount = arr.reduce(function(acc, current) {
+    // For loop to look INSIDE the tag arrs
+    for (let x = 0; x < current.tags.length; x++) {
+    if (acc.hasOwnProperty(current.tags[x])) {
+        acc[current.tags[x]] += 1; // If Key already exists, increment by 1
+    } else {
+        acc[current.tags[x]] = 0; // if Key doesnt exist, create it & assign starting value
+        acc[current.tags[x]] += 1; // THEN increment by 1
+    }}
+  return acc;
+  }, {}) // Problem wants an ARR but acc need to be an OBJ for other steps to work
+    // console.log(tagCount); // This gives me a tally of how many times EVERY individual tag appears
+  
+    let arrThis = Object.entries(tagCount); // Turned the Obj into an Arr containing Arrs of Key:Value pairs
+    let sortTags = arrThis.sort(function(a, b){return b[1] - a[1] }); // Sort them in descending value order (Most to Least) 
+    let fArr = sortTags.slice(0, 3); // Slices top 3 results into a new Arr
+    let finalArr = [];
+    finalArr.push(fArr[0][0], fArr[1][0], fArr[2][0]); // Theres gotta be a better way to do this
+  
+return finalArr;
 };
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
