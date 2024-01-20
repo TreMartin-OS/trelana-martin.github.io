@@ -129,10 +129,16 @@ var youngestCustomer = function (arr) {
 // #5 - **Objective**: Find the average balance of all customers - **Input**: `Array` - **Output**: `Number` - **Constraints**:
 
 var averageBalance = function (arr) {
-    // Needs: Loop thru array, check value of 'balance', save them in a storage arr, convert them to integers, use math to find avg (divide total by number of people), use at least 1 method
-    // Methods?: 
+// Loop thru Arr, collect value of 'balance' into an Arr or OBJ with $ & , removed, convert them to integers, Add them all together & divide by number of customers to find Avg 
 
+let money = arr.reduce(function(acc, current) {
+    acc += Number(current.balance.replace(/[$,]/g, ""));
+    return acc;
+    }, 0)
 
+let average = money / arr.length;
+
+return average;
 };
 // Save for last as it requires more complicated code
 
