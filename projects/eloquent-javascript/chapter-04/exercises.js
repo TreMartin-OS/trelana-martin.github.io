@@ -46,16 +46,32 @@ function sum(array) {
 // reverseArray ////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function reverseArray() {
-
+function reverseArray(array) {
+  // Make a new array & add the old arrs contents to it backwards
+let newArr =[];
+  for (let x = 0; x < array.length; x++) {
+newArr.unshift(array[x]);
+  }
+  return newArr;
 }
 
 ////////////////////////////////////////////////////////////////////////////////
 // reverseArrayInPlace /////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function reverseArrayInPlace() {
+function reverseArrayInPlace(array) {
+  // Make a new array & add the old arrs contents to it backwards
+  let newArr = [];
+  for (let x = 0; x < array.length; x++) {
+    newArr.unshift(array[x]);
+  }
+  // Add reversed new array to the end of the old one & remove the old elements
+  for (let y = 0; y < newArr.length; y++) {
+    array.push(newArr[y]);
+    array.shift(y);
+  }
 
+  return array;
 }
 
 ////////////////////////////////////////////////////////////////////////////////
