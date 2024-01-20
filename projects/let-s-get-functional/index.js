@@ -90,25 +90,38 @@ var femaleCount = function (arr) {
 // #3 - **Objective**: Find the oldest customer's name - **Input**: `Array` - **Output**: `String` - **Constraints**:
 
 var oldestCustomer = function (arr) {
-    // Needs: Loop thru array, check value of 'age', compare ages to find highest, return 'name' value of person with highest age, use at least 1 method
-    // Possible useful methods: .pluck()
 
-    // let oldest = _.pluck(arr, prop) {
-    // if (something is true) {
-    // something happens
-    // }
-    // }
+    let oldest = arr.reduce(function (acc, current) {
+        // Push subarr into main acc arr
+        acc.push([current.name, current.age]);
+        return acc;
+    }, [])
+    // sort these by value  
+    let sortAges = oldest.sort(function (a, b) { return b[1] - a[1] });
+    // Get oldest Customer
+    let oName = sortAges[0][0];
+
+    return oName;
 
 };
-// Skip for now: I dont understand what 'Pluck' actually does
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // #4 - **Objective**: Find the youngest customer's name - **Input**: `Array` - **Output**: `String` - **Constraints**:
 
 var youngestCustomer = function (arr) {
-    // Needs: Loop thru array, check value of 'age', compare ages to find lowest, return 'name' value of person with lowest age, use at least 1 method
-    // Skip until I understand 'Pluck'
+
+    let youngest = arr.reduce(function (acc, current) {
+        // Push subarr into main acc arr
+        acc.push([current.name, current.age]);
+        return acc;
+    }, [])
+    // sort these by value  
+    let sortAges = youngest.sort(function (a, b) { return a[1] - b[1] });
+    // Get oldest Customer
+    let yName = sortAges[0][0];
+
+    return yName;
 
 };
 
@@ -192,27 +205,28 @@ var friendsCount = function (arr, name) {
 
 var topThreeTags = function (arr) {
 
-// This is looking for matching whole arrs, I need it to look INSIDE the arrs
-let tagCount = arr.reduce(function(acc, current) {
-    // For loop to look INSIDE the tag arrs
-    for (let x = 0; x < current.tags.length; x++) {
-    if (acc.hasOwnProperty(current.tags[x])) {
-        acc[current.tags[x]] += 1; // If Key already exists, increment by 1
-    } else {
-        acc[current.tags[x]] = 0; // if Key doesnt exist, create it & assign starting value
-        acc[current.tags[x]] += 1; // THEN increment by 1
-    }}
-  return acc;
-  }, {}) // Problem wants an ARR but acc need to be an OBJ for other steps to work
+    // This is looking for matching whole arrs, I need it to look INSIDE the arrs
+    let tagCount = arr.reduce(function (acc, current) {
+        // For loop to look INSIDE the tag arrs
+        for (let x = 0; x < current.tags.length; x++) {
+            if (acc.hasOwnProperty(current.tags[x])) {
+                acc[current.tags[x]] += 1; // If Key already exists, increment by 1
+            } else {
+                acc[current.tags[x]] = 0; // if Key doesnt exist, create it & assign starting value
+                acc[current.tags[x]] += 1; // THEN increment by 1
+            }
+        }
+        return acc;
+    }, {}) // Problem wants an ARR but acc need to be an OBJ for other steps to work
     // console.log(tagCount); // This gives me a tally of how many times EVERY individual tag appears
-  
+
     let arrThis = Object.entries(tagCount); // Turned the Obj into an Arr containing Arrs of Key:Value pairs
-    let sortTags = arrThis.sort(function(a, b){return b[1] - a[1] }); // Sort them in descending value order (Most to Least) 
+    let sortTags = arrThis.sort(function (a, b) { return b[1] - a[1] }); // Sort them in descending value order (Most to Least) 
     let fArr = sortTags.slice(0, 3); // Slices top 3 results into a new Arr
     let finalArr = [];
     finalArr.push(fArr[0][0], fArr[1][0], fArr[2][0]); // Theres gotta be a better way to do this
-  
-return finalArr;
+
+    return finalArr;
 };
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -224,12 +238,12 @@ var genderCount = function (arr) {
         if (acc.hasOwnProperty(current.gender)) {
             acc[current.gender] += 1;
         } else {
-            acc[current.gender] = 0; 
+            acc[current.gender] = 0;
             acc[current.gender] += 1;
         }
         return acc;
-      }, {})
-      return Gender;
+    }, {})
+    return Gender;
 };
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
