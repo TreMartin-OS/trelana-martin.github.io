@@ -2,16 +2,44 @@
 // range ///////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function range() {
+function range(start, end, step = 1) {
+  let rArr = [];
 
+  if (step < 0) {
+    if (start < end) {
+      for (let x = start; x <= end; x += step) {
+        break;
+      }
+    } else if (start > end) {
+      for (let x = start; x >= end; x += step) {
+        rArr.push(x);
+      }
+    }
+  } else if (step > 0) {
+    if (start < end) {
+      for (let x = start; x <= end; x += step) {
+        rArr.push(x);
+      }
+    } else if (start > end) {
+      for (let x = start; x >= end; x -= step) {
+        rArr.push(x);
+      }
+    }
+  }
+
+  return rArr;
 }
 
 ////////////////////////////////////////////////////////////////////////////////
 // sum /////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function sum() {
-
+function sum(array) {
+  let tArr = array.reduce(function (acc, current) {
+    acc += current;
+    return acc;
+  }, 0);
+  return tArr;
 }
 
 ////////////////////////////////////////////////////////////////////////////////
