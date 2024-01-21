@@ -78,17 +78,31 @@ function reverseArrayInPlace(array) {
 // arrayToList /////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function arrayToList() {
-
-}
+function arrayToList(alArr) {
+  // start from the core & build outward in layers
+    let rest = null;
+    // create loop that iterates backwards
+    for (let x = alArr.length - 1; x >= 0; x--) {
+      // 
+      rest = {value: alArr[x], rest: rest}
+    }
+    return rest;  
+  }
 
 ////////////////////////////////////////////////////////////////////////////////
 // listToArray /////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function listToArray() {
-
-}
+function listToArray(listObj, loArr=[]) { // Dont forget to make default parameter 
+  // Base
+  if (listObj.rest === null) {
+    loArr.push(listObj.value) // last value push needs to be done here since once rest = null the Recursion stops
+    return loArr
+  }
+  // Recursion
+  loArr.push(listObj.value)
+    return listToArray(listObj.rest, loArr); // .slice only works on Arrays
+  }
 
 ////////////////////////////////////////////////////////////////////////////////
 // prepend /////////////////////////////////////////////////////////////////////
