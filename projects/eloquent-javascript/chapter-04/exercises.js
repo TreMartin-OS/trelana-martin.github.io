@@ -108,25 +108,62 @@ function listToArray(listObj, loArr=[]) { // Dont forget to make default paramet
 // prepend /////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function prepend() {
-
-}
+function prepend(element, list) {
+  return {value: element, rest: list}
+  }
 
 ////////////////////////////////////////////////////////////////////////////////
 // nth /////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function nth() {
+function nth(list, number) {
 
+  if (list === undefined) {
+// Easy
+    return undefined;
+// Peasy
+  } else if (number === 0) {
+    return list.value
+// Change into an arr & return that index
+  } else {
+    let maybe = listToArray(list);
+    return maybe[number];
+  }
+  
 }
 
 ////////////////////////////////////////////////////////////////////////////////
 // deepEqual ///////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function deepEqual() {
-
-}
+function deepEqual(obj1, obj2) {
+  // Determine if both arguments are NOT Objects
+    if (typeof obj1 !== 'object' && typeof obj2 !== 'object') {
+      return obj1 === obj2; // This covers simple data
+    }
+  // Determine if 1 of them is not an Object
+    if (typeof obj1 !== 'object' || typeof obj2 !== 'object') {
+      return false; // If 1 is complex & the other simple then they're not gonna be the exact same
+    }
+  // Now you know both are Objects/Arrays so Create an Arr of each Objs keys
+    let keys1 = Object.keys(obj1);
+    let keys2 = Object.keys(obj2);
+  
+    if (keys1.length !== keys2.length) { // This is optional but can be a Quick Catch
+      return false; // Even before comparing contents, if you find theyre not the same length you know they dont match
+    }
+    // Iterate to compare contents of both Arrs
+  for (let x = 0; x < keys1.length; x++) {
+    if (!keys2.includes(keys1[x]) || !deepEqual(obj1[keys1[x]], obj2[keys1[x]])) { 
+      // 1st part is Checking if current key1-index is NOT inside keys2
+      // 2nd part is using Recursion to check the values at the matching indexes to see if theyre the same
+      return false;
+    }
+  }  
+    // If none of these "false" results are triggered then the result must be true
+    return true;
+  }
+  
 
 ////////////////////////////////////////////////////////////////////////////////
 // DON'T REMOVE THIS CODE //////////////////////////////////////////////////////
