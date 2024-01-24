@@ -24,7 +24,7 @@ An Array is also a subtype of Object.
 A collection of data, like Arrays, but the data is stored between {curly braces} in 'key: value' pairs called properties, separated by commas.  Instead of accessing data by numerical index, you just need the 'key'.  Then no matter how much you add or remove from the collection, you can still easily find th values you're after.
 *
 * 6. Function:
-A defined procedure that receives Input(s) & generates an Output.  Used to quickly perform a task on a value by calling its name along with Input(s).  So when you need to perform the same procedure on multiple input values, you dont have to write the same chunk of code over & over. Functions can als be assigned to variables & stored in Objects.
+A defined procedure that produces a Value.  Used to quickly perform a task by calling its name along with optional Input(s).  So when you need to perform the same procedure on multiple input values, you dont have to write the same chunk of code over & over. Functions can also be assigned to variables & stored in Objects.
 *
 * 7. Undefined:
 A default type of data for variables that have yet to be assigned another value.
